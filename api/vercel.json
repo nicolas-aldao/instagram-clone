@@ -1,7 +1,6 @@
 {
   "version": 2,
-  "name": "instagram-server",
-  "alias": ["nicolas-aldao-instagram-api"],
+  "alias": ["nagram-clone-api"],
   "builds": [{ "src": "index.js", "use": "@vercel/node" }],
   "routes": [{
     "headers": {
