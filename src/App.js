@@ -1,13 +1,16 @@
-import React from "react";
-import { Category } from "./components/atoms/Category";
-import { TestForm } from "./components/organisms/TestForm";
+import React from 'react';
+import Header from './components/organisms/Header';
+import { ListOfPhotoCards } from './components/organisms/ListOfPhotoCards';
+import { TestForm } from './components/organisms/TestForm';
+import { GlobalStyle } from './GlobalStyles';
 
 export const App = () => {
   return (
     <>
-      <Category />
-      <p>components</p>
-      <TestForm/>
+      <GlobalStyle />
+      <Header />
+      {/* <TestForm /> */}
+      <ListOfPhotoCards />
     </>
   );
 };
