@@ -34,7 +34,9 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.3",
     "axios": "^1.2.2",
+    "graphql": "^15.8.0",
     "intersection-observer": "^0.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
