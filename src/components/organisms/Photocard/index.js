@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FavButton } from '../../atoms/FavButton';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { useNearScreen } from '../../../hooks/useNearScreen';
@@ -22,17 +23,17 @@ export const Photocard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
     })
     setLiked(!liked)
   };
-  console.log('{ mutation, mutationLoading, mutationError }', { mutation, mutationLoading, mutationError })
+  //console.log('{ mutation, mutationLoading, mutationError }', { mutation, mutationLoading, mutationError })
 
   return (
     <Article ref={element}>
       {show && (
         <Fragment>
-          <a href={`/?detail=${id}`}>
+          <Link to={`/detail/${id}`}>
             <ImgWrapper>
               <Img src={src} />
             </ImgWrapper>
-          </a>
+          </Link>
           <FavButton liked={liked} likes={likes} onClick={handleFavClick}/>
         </Fragment>
       )}

@@ -6,6 +6,7 @@ import { categories } from '../../../../api/db.json';
 export const ListOfCategories = () => {
   const [showFixed, setShowFixed] = useState(false);
   const { categories, loading } = useCategoriesData();
+  // console.log("🚀 ~ file: index.js:9 ~ ListOfCategories ~ categories", categories)
 
   function useCategoriesData() {
     const [categories, setCategories] = useState([]);
@@ -41,7 +42,7 @@ export const ListOfCategories = () => {
         ? 'cargando'
         : categories.map(category => (
             <Item key={category.id}>
-              <Category {...category} />
+              <Category {...category} path={`/pet/${category.id}`} />
             </Item>
           ))}
     </List>

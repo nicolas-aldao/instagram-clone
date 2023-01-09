@@ -1,15 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Logo from '../../molecules/Logo';
 import { ListOfCategories } from '../ListOfCategories';
 import { Container } from './styles';
 
-const Header = () => {
+export const Header = () => {
   return (
     <Container>
-      <Logo />
-      <ListOfCategories />
+      <Link to="/">
+        <Logo />
+      </Link>
+      {/* <ListOfCategories /> */}
     </Container>
   );
 };
-
-export default Header;

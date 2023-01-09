@@ -1,12 +1,12 @@
-import React from "react";
-import LogoSVG from "../../atoms/LogoSVG";
+import React from 'react';
+import LogoSVG from '../../atoms/LogoSVG';
 import { Text, Container } from './styles';
 
 const Logo = () => {
   return (
     <Container>
-      <LogoSVG />
-      <Text>Alexandría</Text>
+        <LogoSVG />
+        <Text>Alexandría</Text>
     </Container>
   );
 };
