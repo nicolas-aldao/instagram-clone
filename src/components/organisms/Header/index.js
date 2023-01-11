@@ -7,9 +7,9 @@ import { Container } from './styles';
 export const Header = () => {
   return (
     <Container>
-      <Link to="/">
+      {/* <Link to="/">
         <Logo />
-      </Link>
+      </Link> */}
       {/* <ListOfCategories /> */}
     </Container>
   );
