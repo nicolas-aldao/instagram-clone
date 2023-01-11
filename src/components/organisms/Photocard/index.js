@@ -9,7 +9,7 @@ import { Article, ImgWrapper, Img, Button } from './styles';
 const DEFAULT_IMAGE =
   'https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_cats.jpg';
 
-export const Photocard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
+export const Photocard = ({ id, likes = 0, src = DEFAULT_IMAGE }, props) => {
   const key = `liked-${id}`;
   const [liked, setLiked] = useLocalStorage(key, false);
   const [show, element] = useNearScreen();

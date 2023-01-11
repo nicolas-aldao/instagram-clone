@@ -12,11 +12,8 @@ import { NotRegisteredUserScreen } from './components/pages/NotRegisteredUserScr
 import { GlobalStyle } from './GlobalStyles';
 
 export const App = () => {
-  //const isAuth = true;
   const { isAuth } = useContext(Context);
   console.log("🚀 ~ file: App.js:17 ~ App ~ isAuth", isAuth)
-  //console.log("🚀 ~ file: App.js:17 ~ App ~ value", value)
-  //console.log('🚀 ~ file: App.js:17 ~ App ~ isAuth', isAuth);
 
   const AppLayout = () => (
     <>
