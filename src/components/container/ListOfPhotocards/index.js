@@ -8,7 +8,7 @@ export const ListOfPhotocards = ({ categoryId }) => {
     // has
     const { data, loading, error } = useQuery(GET_PHOTOS, {
         variables: { categoryId }
-      })
+      }, { fetchPolicy: 'network-only' })
       if (loading) return 'Cargando...'
       if (error) return <pre>{error.message}</pre>
       return (
