@@ -3,7 +3,7 @@ import { Layout } from '../../layouts/BasicLayout';
 import useGetFavorites from '../../../hooks/useGetFavorites';
 import { Grid, Link, Image } from './styles';
 
-export const FavoritesScreen = () => {
+export default () => {
   const { data, loading, error } = useGetFavorites();
 
   if (loading) return 'Cargando...';
