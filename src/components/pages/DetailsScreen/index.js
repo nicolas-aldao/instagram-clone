@@ -6,8 +6,7 @@ import { PhotocardWithQuery } from '../../container/PhotocardWithQuery';
 
 const DetailsScreen = ({ detailId }) => {
   const params = useParams();
-//   const urlParams = new window.URLSearchParams(window.location.search);
-//   const detailId = urlParams.get("detailId");
+
   return (
     <>
       <PhotocardWithQuery id={params.detailId} />
