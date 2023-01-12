@@ -10,6 +10,7 @@ export default () => {
   if (error) return <pre>{error.message}</pre>;
 
   const { favs } = data;
+  console.log("🚀 ~ file: index.js:13 ~ data", data)
   return (
     <BasicLayout
       title="Tus favoritos"
