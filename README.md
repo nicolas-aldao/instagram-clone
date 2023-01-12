@@ -1,7 +1,15 @@
-## curso-platzi-react-avanzado ⚛️
+## Instagram clone ⚛️
 
-**¡Sígueme en Youtube para más contenido de React y Javascript!** 👉 https://www.youtube.com/midudev
+## Project developed with the platzi course from midudev 👉 https://platzi.com/cursos/react-avanzado
+## Midudev channel: https://www.youtube.com/midudev
 
-**¡Sígueme en Twitch para streams sobre desarrollo web!** 👉 https://www.twitch.tv/midudev
+Package manager: npm
 
-Repositorio con el código del [Curso Avanzado de React de Platzi](https://platzi.com/cursos/react-avanzado/)
+Commands:
+
+generate binaries:
+./node_modules/.bin/webpack —mode “development”
+
+Run generated code:
+npx serve dist -s
+

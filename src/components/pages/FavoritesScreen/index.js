@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '../../layouts/BasicLayout';
+import { BasicLayout } from '../../layouts/BasicLayout';
 import useGetFavorites from '../../../hooks/useGetFavorites';
 import { Grid, Link, Image } from './styles';
 
@@ -11,7 +11,7 @@ export default () => {
 
   const { favs } = data;
   return (
-    <Layout
+    <BasicLayout
       title="Tus favoritos"
       subtitle="Aquí puedes encontrar tus favoritos">
       <Grid>
@@ -21,6 +21,6 @@ export default () => {
           </Link>
         ))}
       </Grid>
-    </Layout>
+    </BasicLayout>
   );
 };

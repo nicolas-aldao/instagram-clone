@@ -1,9 +1,9 @@
 import React from 'react';
-import { Layout } from '../../layouts/BasicLayout';
+import { BasicLayout } from '../../layouts/BasicLayout';
 
-export const NotFoundScreen = () => (
-  <Layout
+export default () => (
+  <BasicLayout
     title="Not found"
-    subtitle="This page doesn't exists">
-  </Layout>
+    subtitle="This page doesn't exist">
+  </BasicLayout>
 );

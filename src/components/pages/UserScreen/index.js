@@ -1,13 +1,13 @@
 import React, { Fragment, useContext } from 'react';
-import { Layout } from '../../layouts/BasicLayout';
+import { BasicLayout } from '../../layouts/BasicLayout';
 import { Context } from '../../../Context';
 import { SubmitButton } from '../../atoms/SubmitButton';
 
-export const UserScreen = () => {
+export default () => {
   const { removeAuth } = useContext(Context);
   return (
-    <Layout title="My account" subtitle="My User">
+    <BasicLayout title="My account" subtitle="Account Information">
       <SubmitButton text="Logout" onClick={removeAuth} />
-    </Layout>
+    </BasicLayout>
   );
 };

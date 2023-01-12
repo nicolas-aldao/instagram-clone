@@ -1,16 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Layout } from '../../layouts/BasicLayout';
+import { BasicLayout } from '../../layouts/BasicLayout';
 import { PhotocardWithQuery } from '../../container/PhotocardWithQuery';
 
-const DetailsScreen = ({ detailId }) => {
+export default () => {
   const params = useParams();
 
   return (
-    <Layout title={`Fotografía ${Number(params.detailId) + 1}`}>
+    <BasicLayout title={`Fotografía ${Number(params.detailId) + 1}`}>
       <PhotocardWithQuery id={params.detailId} />
-    </Layout>
+    </BasicLayout>
   );
 };
-
-export default DetailsScreen;

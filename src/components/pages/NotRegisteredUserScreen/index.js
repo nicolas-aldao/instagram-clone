@@ -4,7 +4,7 @@ import { UserForm } from '../../organisms/UserForm';
 import { useRegisterMutation } from '../../../hooks/useRegisterMutation';
 import { useLoginMutation } from '../../../hooks/useLoginMutation';
 
-export const NotRegisteredUserScreen = () => {
+export default () => {
   const { registerMutation, loading, error } = useRegisterMutation();
   const {
     login,
@@ -34,23 +34,23 @@ export const NotRegisteredUserScreen = () => {
           });
         };
 
-        const errorMsg = error && 'El usuario ya existe.';
+        const errorMsg = error && 'The user already exists.';
 
         const errorMsgLogin =
-          errorLogin && 'El usuario o contraseña incorrecto.';
+          errorLogin && 'The user or password is incorrect.';
 
         return (
           <>
             <UserForm
               disabled={loading}
               error={errorMsg}
-              title="Registrarse"
+              title="Sign up"
               onSubmit={onSubmit}
             />
             <UserForm
               disabled={loadingLogin}
               error={errorMsgLogin}
-              title="Iniciar sesion"
+              title="Sign in"
               onSubmit={onSubmitLogin}
             />
           </>
