@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifestPlugin = require('webpack-pwa-manifest');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+
 module.exports = {
   output: {
     filename: 'app.bundle.js',
@@ -19,9 +21,32 @@ module.exports = {
       theme_color: '#8d00ff',
       icons: [
         {
-          src: path.resolve('src/Assets/icon.png'),
-          sizes: [96, 128, 192, 256, 384, 512],
-          purpose: 'maskable',
+          src: path.resolve('src/assets/icon.png'),
+          size: '1024x1024',
+          sizes: [96, 128,144, 192, 256, 384, 512],
+          purpose: 'maskable any',
+          destination: path.join('Icons'),
+          ios: true,
+        }
+      ]
+    }),
+    new WorkboxWebpackPlugin.GenerateSW({ // generate offline support
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp( // URLS where we store our app images
+            'https://(res.cloudinary.com|images.unsplash.com)',
+          ),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'images',
+          },
+        },
+        { // URL where we have our api data
+          urlPattern: new RegExp('https://nagram-clone-api.vercel.app'),
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'api',
+          },
         },
       ],
     }),
