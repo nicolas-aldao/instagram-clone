@@ -6,7 +6,6 @@ import { categories } from '../../../../api/db.json';
 export const ListOfCategories = () => {
   const [showFixed, setShowFixed] = useState(false);
   const { categories, loading } = useCategoriesData();
-  // console.log("🚀 ~ file: index.js:9 ~ ListOfCategories ~ categories", categories)
 
   function useCategoriesData() {
     const [categories, setCategories] = useState([]);
@@ -14,7 +13,7 @@ export const ListOfCategories = () => {
 
     useEffect(() => {
       setLoading(true);
-      fetch('https://nagram-clone-api-nicolas-aldao.vercel.app/categories')
+      fetch('https://json-server-ruby.vercel.app/categories')
         .then(res => res.json())
         .then(response => {
           setCategories(response);

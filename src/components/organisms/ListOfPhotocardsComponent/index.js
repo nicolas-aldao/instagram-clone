@@ -16,7 +16,7 @@ import { GET_PHOTOS } from '../../../hoc/withPhotos';
 //   }
 // `;
 
-export const ListOfPhotocardsComponent = ({ data: { photos = []} }) => {
+export const ListOfPhotocardsComponent = ({ data = []}) => {
   // temporal
   // const loading = true;
   // const { loading, error, photos } = useQuery(GET_PHOTOS, {
@@ -26,7 +26,7 @@ export const ListOfPhotocardsComponent = ({ data: { photos = []} }) => {
   //if (photos) {
     return (
       <ul>
-        {photos.map(photo => (
+        {data.map(photo => (
           <Photocard key={photo.id} id={photo.id} {...photo} />
         ))}
       </ul>
