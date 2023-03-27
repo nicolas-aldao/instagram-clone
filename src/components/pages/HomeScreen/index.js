@@ -7,8 +7,8 @@ export const HomeScreen = () => {
   const params = useParams();
   return (
     <BasicLayout
-      title="Tu app de fotos de mascotas"
-      subtitle="Con Petgram puedes encontrar fotos de animales domésticos muy bonitos"
+      title="Tu app de fotos"
+      subtitle="Con Igram puedes encontrar fotos favoritas"
       showCategories>
       <ListOfPhotocards categoryId={params.id} />
     </BasicLayout>

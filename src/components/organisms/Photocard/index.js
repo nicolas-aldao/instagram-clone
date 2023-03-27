@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FavButton } from '../../atoms/FavButton';
 //import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { useNearScreen } from '../../../hooks/useNearScreen';
-import { useMutationToggleLike } from '../../../hooks/useMutationToggleLike';
 import { Article, ImgWrapper, Img, Button } from './styles';
 
 const DEFAULT_IMAGE =
@@ -16,7 +15,6 @@ export const Photocard = (
   //const key = `liked-${id}`;
   //const [liked, setLiked] = useLocalStorage(key, false);
   const [show, element] = useNearScreen();
-  const { mutation, mutationLoading, mutationError } = useMutationToggleLike();
 
   const handleFavClick = () => {
     //!liked &&

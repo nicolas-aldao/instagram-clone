@@ -7,7 +7,7 @@ export const BasicLayout = ({ children, title, subtitle, showCategories }) => {
   return (
     <Fragment>
       <Helmet>
-        {title && <title> Instagram Clone | {title} </title>}
+        {title && <title> Igram | {title} </title>}
         {subtitle && <meta name="description" content={subtitle} />}
       </Helmet>
       <Div>
