@@ -1,6 +1,6 @@
-## Instagram clone ⚛️
+## Artgram ⚛️
 
-## Project developed with the platzi course from midudev 👉 https://platzi.com/cursos/react-avanzado
+## Initial project developed with the platzi course from midudev 👉 https://platzi.com/cursos/react-avanzado
 ## Midudev channel: https://www.youtube.com/midudev
 
 Package manager: npm

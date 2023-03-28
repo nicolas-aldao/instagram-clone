@@ -13,8 +13,8 @@ module.exports = {
       template: 'src/index.html',
     }),
     new WebpackPwaManifestPlugin({
-      name: 'Instagram clone',
-      shortname: 'Instagram clone',
+      name: 'Artgram',
+      shortname: 'Artgram',
       description:
         'App made with react using webpack with midudev course from platzi',
       background_color: '#fff',
@@ -42,7 +42,7 @@ module.exports = {
           },
         },
         { // URL where we have our api data
-          urlPattern: new RegExp('https://nagram-clone-api.vercel.app'),
+          urlPattern: new RegExp('https://json-server-ruby.vercel.app'),
           handler: 'NetworkFirst',
           options: {
             cacheName: 'api',

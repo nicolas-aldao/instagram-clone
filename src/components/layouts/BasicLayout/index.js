@@ -7,7 +7,7 @@ export const BasicLayout = ({ children, title, subtitle, showCategories }) => {
   return (
     <Fragment>
       <Helmet>
-        {title && <title> Igram | {title} </title>}
+        {title && <title> Artgram | {title} </title>}
         {subtitle && <meta name="description" content={subtitle} />}
       </Helmet>
       <Div>

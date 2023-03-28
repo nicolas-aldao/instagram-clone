@@ -1,4 +1,4 @@
-import React, { useContext, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider as AuthProvider } from './AuthContext';
 import { Header } from './components/organisms/Header';

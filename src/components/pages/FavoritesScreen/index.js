@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Context as AuthContext } from '../../../AuthContext';
-import { BasicLayout } from '../../layouts/BasicLayout';
-import useGetFavorites from '../../../hooks/useGetFavorites';
 import { getFavsAPI } from '../../../services/apiPetgram';
-import { Grid, Link, Image } from './styles';
+import { BasicLayout } from '../../layouts/BasicLayout';
 import NotRegisteredUserScreen from '../NotRegisteredUserScreen';
+import { Grid, Link, Image } from './styles';
 
 export default () => {
   const [datos, setDatos] = useState([]);
@@ -31,8 +30,6 @@ export default () => {
       setError(err);
     }
   }, []);
-
-  // const { data, loading, error } = useGetFavorites();
 
   if (loading) return 'Cargando...';
   if (error) return <pre>{error.message}</pre>;
