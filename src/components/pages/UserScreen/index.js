@@ -5,12 +5,13 @@ import { SubmitButton } from '../../atoms/SubmitButton';
 import NotRegisteredUserScreen from '../NotRegisteredUserScreen';
 
 export default () => {
-  const { state } = useContext(AuthContext);
+  const { state, signOut } = useContext(AuthContext);
   console.log('🚀 ~ file: index.js:14 ~ state:', state);
 
   return state.isAuth ? (
     <BasicLayout title="My account" subtitle="Account Information">
-      <SubmitButton text="Logout" onClick={() => console.log('hola')} />
+      <h4>Welcome {state.firstname ? state.firstname : state.email} {` ${state.lastname}`}!</h4>
+      <SubmitButton text="Logout" onClick={() => signOut()} />
     </BasicLayout>
   ) : (
     <NotRegisteredUserScreen />

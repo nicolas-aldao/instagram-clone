@@ -7,8 +7,10 @@ export const HomeScreen = () => {
   const params = useParams();
   return (
     <BasicLayout
-      title="All art in one app"
-      subtitle="Con Artgram puedes encontrar fotos favoritas"
+      title=""
+      // All art in one app
+      subtitle=""
+      // Con Artgram puedes encontrar fotos favoritas
       showCategories>
       <ListOfPhotocards categoryId={params.id} />
     </BasicLayout>

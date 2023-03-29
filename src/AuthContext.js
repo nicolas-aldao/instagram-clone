@@ -5,7 +5,14 @@ import apiAuth from '../src/services/apiAuth';
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'signin-or-signup':
-      return { errorMessage: '', token: action.payload };
+      return {
+        errorMessage: '',
+        token: action.payload.token,
+        userId: action.payload.userId,
+        email: action.payload.email,
+        firstname: action.payload.firstname,
+        lastname: action.payload.lastname,
+      };
     case 'add_error':
       return { ...state, errorMessage: action.payload };
     case 'clear_error_message':
@@ -22,11 +29,17 @@ const authReducer = (state, action) => {
 };
 
 const signUp = dispatch => {
-  return async ({ email, password }, callback) => {
+  return async ({ email, password, firstname, lastname }, callback) => {
     try {
-      const response = await apiAuth.post('/signup', { email, password });
+      const response = await apiAuth.post('/signup', { email, password, firstname, lastname });
       await AsyncStorage.setItem('token', response.data.token);
-      dispatch({ type: 'signin-or-signup', payload: response.data.token });
+      dispatch({ type: 'signin-or-signup', payload: {
+        token: response.data.token,
+        userId: response.data.userId,
+        email: response.data.email,
+        firstname: response.data.firstname,
+        lastname: response.data.lastname,
+      }, });
       dispatch({ type: 'is_auth' });
       if (callback) {
         callback();
@@ -46,7 +59,15 @@ const signIn = dispatch => {
     try {
       const response = await apiAuth.post('/signin', { email, password });
       await AsyncStorage.setItem('token', response.data.token);
-      dispatch({ type: 'signin-or-signup', payload: response.data.token });
+      dispatch({
+        type: 'signin-or-signup',
+        payload: {
+          token: response.data.token,
+          email: response.data.email,
+          firstname: response.data.firstname,
+          lastname: response.data.lastname,
+        },
+      });
       dispatch({ type: 'is_auth' });
       if (callback) {
         callback();
@@ -99,5 +120,10 @@ const tryLocalSignIn = dispatch => {
 export const { Provider, Context } = createDataContext(
   authReducer,
   { signUp, signIn, signOut, clearErrorMessages, tryLocalSignIn },
-  { token: null, errorMessage: '', isAuth: false },
+  {
+    token: null,
+    errorMessage: '',
+    isAuth: false,
+    user: { id: null, firstname: null, lastname: null },
+  },
 );

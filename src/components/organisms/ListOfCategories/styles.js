@@ -9,6 +9,7 @@ export const List = styled.ul`
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
   width: 100%;
+  margin-bottom: 10px;
   &::-webkit-scrollbar {
     width: 0 !important;
   }
