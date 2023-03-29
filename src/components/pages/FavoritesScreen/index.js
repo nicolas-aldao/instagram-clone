@@ -37,8 +37,8 @@ export default () => {
   const favs = datos;
   const Page = () => state.isAuth ? (
     <BasicLayout
-      title="Tus favoritos"
-      subtitle="Aquí puedes encontrar tus favoritos">
+      title="Favorites"
+      subtitle="Here are your favorite photos">
       <Grid>
         {favs.map(fav => (
           <Link key={fav.id} to={`/detail/${fav.id}`}>

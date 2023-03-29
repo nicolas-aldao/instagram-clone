@@ -1,16 +1,25 @@
 import styled from 'styled-components';
 
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  `;
+
 export const Form = styled.form`
-  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
 `;
 
 export const Input = styled.input`
   border: 1px solid #ccc;
   border-radius: 3px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   padding: 8px 4px;
   display: block;
-  width: 100%;
+  width: 400px;
   &[disabled] {
     opacity: 0.3;
   }
@@ -21,8 +30,8 @@ export const Button = styled.button`
   border-radius: 3px;
   color: #fff;
   height: 32px;
-  display: block;
-  width: 100%;
+  width: 250px;
+  align-self: center;
   text-align: center;
   &[disabled] {
     opacity: 0.3;
