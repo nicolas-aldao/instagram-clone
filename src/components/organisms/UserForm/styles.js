@@ -18,8 +18,9 @@ export const Input = styled.input`
   border-radius: 3px;
   margin-bottom: 16px;
   padding: 8px 4px;
-  display: block;
-  width: 400px;
+  display: flex;
+  align-self: center;
+  width: calc(100% - 16px);
   &[disabled] {
     opacity: 0.3;
   }
