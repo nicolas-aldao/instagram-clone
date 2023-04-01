@@ -1,21 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery, gql } from '@apollo/client';
 import { getPhotoAPI } from '../../../services/apiPetgram';
 import { Photocard } from '../../organisms/Photocard';
 //import { PhotocardSkeleton } from "../skeletons/PhotocardSkeleton";
-
-// const GET_SINGLE_PHOTO = gql`
-//   query getSinglePhoto($id: ID!) {
-//     photo(id: $id) {
-//       id
-//       categoryId
-//       src
-//       likes
-//       userId
-//       liked
-//     }
-//   }
-// `;
 
 export const PhotocardWithQuery = ({ id }) => {
   const [datos, setDatos] = useState([]);
@@ -45,5 +31,5 @@ export const PhotocardWithQuery = ({ id }) => {
     if (loading) return <p>Cargando...</p>;
     else if (error) return <p>Oops, something happened</p>;
   }
-  return <Photocard {...datos} />;
+  return <Photocard {...datos} title={datos.title}/>;
 };
