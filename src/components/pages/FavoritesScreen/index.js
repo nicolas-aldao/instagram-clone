@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Context as AuthContext } from '../../../AuthContext';
 import { getFavsAPI } from '../../../services/apiPetgram';
 import { BasicLayout } from '../../layouts/BasicLayout';
+import LoadingScreen from '../LoadingScreen';
 import NotRegisteredUserScreen from '../NotRegisteredUserScreen';
 import { Grid, Link, Image } from './styles';
 
@@ -31,7 +32,7 @@ export default () => {
     }
   }, []);
 
-  if (loading) return 'Cargando...';
+  if (loading) return <LoadingScreen/>
   if (error) return <pre>{error.message}</pre>;
 
   const favs = datos;
