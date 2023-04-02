@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { getPhotosAPI } from '../../../services/apiPetgram';
-import { useQuery, gql } from '@apollo/client';
-import { GET_PHOTOS } from '../../../hoc/withPhotos';
 import { ListOfPhotocardsComponent } from '../../organisms/ListOfPhotocardsComponent';
 
 export const ListOfPhotocards = ({ categoryId }) => {

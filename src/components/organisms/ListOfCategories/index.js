@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { LoadingCategory } from '../../atoms/LoadingCategory';
 import { Category } from '../../atoms/Category';
 import { List, Item } from './styles';
 import { categories } from '../../../../api/db.json';
@@ -6,6 +7,7 @@ import { categories } from '../../../../api/db.json';
 export const ListOfCategories = () => {
   const [showFixed, setShowFixed] = useState(false);
   const { categories, loading } = useCategoriesData();
+  const loadingArray = [1, 2, 3, 4, 5];
 
   function useCategoriesData() {
     const [categories, setCategories] = useState([]);
@@ -38,7 +40,11 @@ export const ListOfCategories = () => {
   const renderList = fixed => (
     <List fixed={fixed}>
       {loading
-        ? 'cargando'
+        ? loadingArray.map(category => (
+          <Item key={category}>
+            <LoadingCategory {...category} path={`/pet/${category.id}`} />
+          </Item>
+        ))
         : categories.map(category => (
             <Item key={category.id}>
               <Category {...category} path={`/pet/${category.id}`} />
