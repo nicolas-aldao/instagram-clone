@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FavButton } from '../../atoms/FavButton';
 import { useNearScreen } from '../../../hooks/useNearScreen';
-import { Article, ImgWrapper, Img, Button } from './styles';
+import { Article, ImgWrapper, Img, Title, Subtitle } from './styles';
 
 export const Photocard = (
   { id, liked, likes = 0, src, title, author, includeDetails = false },
@@ -24,8 +24,8 @@ export const Photocard = (
               <Img src={src} />
             </ImgWrapper>
           </Link>
-          {includeDetails && title && <h4>{title}</h4>}
-          {includeDetails && author && <h5>{author}</h5>}
+          {includeDetails && title && <Title>{title}</Title>}
+          {includeDetails && author && <Subtitle>{author}</Subtitle>}
           <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
         </>
       )}

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { fadeIn } from "../../../styles/animations";
+import styled from 'styled-components';
+import { fadeIn } from '../../../styles/animations';
 
 export const Article = styled.article`
   min-height: 200px;
@@ -24,4 +24,14 @@ export const Img = styled.img`
   position: absolute;
   top: 0;
   width: 100%;
+`;
+
+export const Title = styled.h4`
+  margin: 0;
+  margin-top: 5px;
+`;
+
+export const Subtitle = styled.h5`
+  margin: 0;
+  margin-top: 5px;
 `;
