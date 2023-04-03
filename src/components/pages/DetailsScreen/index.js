@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getPhotoAPI } from '../../../services/apiPetgram';
 import { BasicLayout } from '../../layouts/BasicLayout';
 import { Photocard } from '../../organisms/Photocard';
+import LoadingScreen from '../LoadingScreen';
 
 export default (props) => {
   const [datos, setDatos] = useState([]);
@@ -31,7 +32,7 @@ export default (props) => {
   }, []);
 
   {
-    if (loading) return <p>Cargando...</p>;
+    if (loading) return <LoadingScreen/>;
     else if (error) return <p>Oops, something happened</p>;
   }
   return (
