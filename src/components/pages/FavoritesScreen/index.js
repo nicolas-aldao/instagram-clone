@@ -42,8 +42,8 @@ export default () => {
       subtitle="Here are your favorite photos">
       <Grid>
         {favs.map(fav => (
-          <Link key={fav.id} to={`/detail/${fav.id}`}>
-            <Image key={fav.id} src={fav.src} />
+          <Link key={fav._id} to={`/detail/${fav._id}`}>
+            <Image key={fav._id} src={fav.src} />
           </Link>
         ))}
       </Grid>
