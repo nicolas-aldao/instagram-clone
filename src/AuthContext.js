@@ -54,7 +54,6 @@ const signUp = dispatch => {
 };
 
 const signIn = dispatch => {
-  console.log('entra signin');
   return async ({ email, password }, callback) => {
     try {
       const response = await apiAuth.post('/signin', { email, password });

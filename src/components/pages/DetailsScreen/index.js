@@ -10,14 +10,12 @@ export default (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(undefined);
   const params = useParams();
-  console.log("🚀 ~ file: index.js:12 ~ params:", params)
 
   useEffect(() => {
     async function fetchMyAPI() {
       setLoading(true);
-      let res = await getPhotoAPI(params.detailId.toString());
-      console.log('🚀 ~ file: index.js:17 ~ fetchMyAPI ~ res:', res.data[0]);
-      setDatos(res.data[0]);
+      let res = await getPhotoAPI(params.detailId);
+      setDatos(res.data);
       setLoading(false);
       return;
     }
