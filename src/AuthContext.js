@@ -31,15 +31,23 @@ const authReducer = (state, action) => {
 const signUp = dispatch => {
   return async ({ email, password, firstname, lastname }, callback) => {
     try {
-      const response = await apiAuth.post('/signup', { email, password, firstname, lastname });
+      const response = await apiAuth.post('/signup', {
+        email,
+        password,
+        firstname,
+        lastname,
+      });
       await AsyncStorage.setItem('token', response.data.token);
-      dispatch({ type: 'signin-or-signup', payload: {
-        token: response.data.token,
-        userId: response.data.userId,
-        email: response.data.email,
-        firstname: response.data.firstname,
-        lastname: response.data.lastname,
-      }, });
+      dispatch({
+        type: 'signin-or-signup',
+        payload: {
+          token: response.data.token,
+          userId: response.data.userId,
+          email: response.data.email,
+          firstname: response.data.firstname,
+          lastname: response.data.lastname,
+        },
+      });
       dispatch({ type: 'is_auth' });
       if (callback) {
         callback();
@@ -62,6 +70,7 @@ const signIn = dispatch => {
         type: 'signin-or-signup',
         payload: {
           token: response.data.token,
+          userId: response.data.userId,
           email: response.data.email,
           firstname: response.data.firstname,
           lastname: response.data.lastname,
@@ -123,6 +132,8 @@ export const { Provider, Context } = createDataContext(
     token: null,
     errorMessage: '',
     isAuth: false,
-    user: { id: null, firstname: null, lastname: null },
+    userId: null,
+    firstname: null,
+    lastname: null,
   },
 );

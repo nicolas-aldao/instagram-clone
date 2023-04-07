@@ -20,7 +20,7 @@ export const ListOfPhotocardsComponent = ({ data = [], isLoading = false }) => {
   return (
     <ul>
       {data.map(photo => (
-        <Photocard key={photo._id} id={photo._id} {...photo} />
+        <Photocard key={photo._id} id={photo._id} liked={photo.liked} {...photo} />
       ))}
     </ul>
   );

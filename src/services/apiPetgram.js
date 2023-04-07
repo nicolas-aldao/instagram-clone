@@ -10,9 +10,14 @@ export const getFavsAPI = async () => {
   }
 };
 
-export const getPhotosAPI = async () => {
+export const getPhotosAPI = async (id) => {
+  let res;
   try {
-    const res = await axios.get(baseUrl + "/photos");
+    if (id) {
+      res = await axios.get(baseUrl + "/photos/user/" + id);
+    } else {
+      res = await axios.get(baseUrl + "/photos");
+    }
     return res;
   } catch (err) {
     console.log("getPhotosAPI " + err);
@@ -28,3 +33,32 @@ export const getPhotoAPI = async (id) => {
   }
 };
 
+export const addLikeAPI = async (userId, photoId) => {
+  try {
+    const res = await axios.post(baseUrl + "/photouser", {
+      userId,
+      photoId
+    });
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getPhotoUserByUser = async (userId) => {
+  try {
+    const res = await axios.get(baseUrl + "/photouser/user/" + userId);
+    return res;
+  } catch (err) {
+    console.log("getPhotoAPI " + err);
+  }
+};
+
+export const getPhotoUserByPhoto = async (photoId) => {
+  try {
+    const res = await axios.get(baseUrl + "/photouser/photo/" + photoId);
+    return res;
+  } catch (err) {
+    console.log("getPhotoAPI " + err);
+  }
+};
