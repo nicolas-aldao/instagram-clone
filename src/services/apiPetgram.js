@@ -61,6 +61,7 @@ export const addDislikeAPI = async (userId, photoId) => {
         photoId: photoId
       }
     });
+    console.log("🚀 ~ file: apiPetgram.js:68 ~ addDislikeAPI ~ res:", res)
     return res;
   } catch (err) {
     console.log(err);

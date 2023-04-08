@@ -17,17 +17,15 @@ export const Photocard = ({
 }) => {
   const [show, element] = useNearScreen();
   const { state } = useContext(AuthContext);
-  const [likeFront, setLikeFront] = useState(false);
-  const [likeNumber, setLikeNumber] = useState(0);
-  // console.log('🚀 ~ file: index.js:13 ~ SOLO state:', state);
-  // state.userId && console.log('🚀 ~ file: index.js:13 ~ SOLO EL ID state:', state.userId);
+  const [likeFront, setLikeFront] = useState(liked);
+  const [likeNumber, setLikeNumber] = useState(likes);
 
   const handleLike = async () => {
     if (state.userId) {
       try {
         await addLikeAPI(state.userId, id);
         setLikeFront(true);
-        setLikeNumber(1);
+        setLikeNumber(likeNumber + 1);
       } catch (e) {
         console.log(e);
       }
@@ -41,7 +39,7 @@ export const Photocard = ({
       try {
         await addDislikeAPI(state.userId, id);
         setLikeFront(false);
-        setLikeNumber(0);
+        setLikeNumber(likeNumber - 1);
       } catch (e) {
         console.log(e);
       }
@@ -65,7 +63,11 @@ export const Photocard = ({
           </Link>
           {includeDetails && title && <Title>{title}</Title>}
           {includeDetails && author && <Subtitle>{author}</Subtitle>}
-          <FavButton liked={liked || likeFront} likes={likes + likeNumber} onClick={(liked || likeFront) ? handleLike : handleDislike} />
+          <FavButton
+            liked={likeFront}
+            likes={likeNumber}
+            onClick={likeFront ? handleDislike : handleLike}
+          />
         </>
       )}
     </Article>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
-import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { Button } from './styles';
 
 export const FavButton = ({ liked, likes, onClick }) => {
@@ -8,7 +7,7 @@ export const FavButton = ({ liked, likes, onClick }) => {
 
   return (
     <Button onClick={onClick}>
-      <Icon size="32px" />
+      <Icon size="32px" color={liked ? '#ff2f40' : 'black'}/>
       {likes} likes!
     </Button>
   );
