@@ -53,6 +53,20 @@ export const addLikeAPI = async (userId, photoId) => {
   }
 };
 
+export const addDislikeAPI = async (userId, photoId) => {
+  try {
+    const res = await axios.delete(baseUrl + "/photouser", {
+      params: {
+        userId: userId,
+        photoId: photoId
+      }
+    });
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const getPhotoUserByUser = async (userId) => {
   try {
     const res = await axios.get(baseUrl + "/photouser/user/" + userId);

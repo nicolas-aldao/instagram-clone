@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context as AuthContext } from '../../../AuthContext';
-import { addLikeAPI } from '../../../services/apiPetgram';
+import { addLikeAPI, addDislikeAPI } from '../../../services/apiPetgram';
 import { FavButton } from '../../atoms/FavButton';
 import { useNearScreen } from '../../../hooks/useNearScreen';
 import { Article, ImgWrapper, Img, Title, Subtitle } from './styles';
@@ -22,12 +22,26 @@ export const Photocard = ({
   // console.log('🚀 ~ file: index.js:13 ~ SOLO state:', state);
   // state.userId && console.log('🚀 ~ file: index.js:13 ~ SOLO EL ID state:', state.userId);
 
-  const handleFavClick = async () => {
+  const handleLike = async () => {
     if (state.userId) {
       try {
         await addLikeAPI(state.userId, id);
         setLikeFront(true);
         setLikeNumber(1);
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      console.log('User is not logged');
+    }
+  };
+
+  const handleDislike = async () => {
+    if (state.userId) {
+      try {
+        await addDislikeAPI(state.userId, id);
+        setLikeFront(false);
+        setLikeNumber(0);
       } catch (e) {
         console.log(e);
       }
@@ -51,7 +65,7 @@ export const Photocard = ({
           </Link>
           {includeDetails && title && <Title>{title}</Title>}
           {includeDetails && author && <Subtitle>{author}</Subtitle>}
-          <FavButton liked={liked || likeFront} likes={likes + likeNumber} onClick={handleFavClick} />
+          <FavButton liked={liked || likeFront} likes={likes + likeNumber} onClick={(liked || likeFront) ? handleLike : handleDislike} />
         </>
       )}
     </Article>
