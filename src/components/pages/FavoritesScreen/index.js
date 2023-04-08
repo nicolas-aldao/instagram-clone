@@ -14,9 +14,9 @@ export default () => {
   console.log('🚀 ~ file: index.js:14 ~ state:', state);
 
   useEffect(() => {
-    async function fetchMyAPI() {
+    async function fetchMyAPI(id) {
       setLoading(true);
-      let res = await getFavsAPI();
+      let res = await getFavsAPI(state.userId);
       console.log('🚀 ~ file: index.js:17 ~ fetchMyAPI ~ res:', res);
       setDatos(res.data);
       setLoading(false);

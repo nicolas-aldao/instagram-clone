@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context as AuthContext } from '../../../AuthContext';
 import { addLikeAPI } from '../../../services/apiPetgram';
@@ -17,13 +17,17 @@ export const Photocard = ({
 }) => {
   const [show, element] = useNearScreen();
   const { state } = useContext(AuthContext);
+  const [likeFront, setLikeFront] = useState(false);
+  const [likeNumber, setLikeNumber] = useState(0);
   // console.log('🚀 ~ file: index.js:13 ~ SOLO state:', state);
   // state.userId && console.log('🚀 ~ file: index.js:13 ~ SOLO EL ID state:', state.userId);
 
-  const handleFavClick = () => {
+  const handleFavClick = async () => {
     if (state.userId) {
       try {
-        addLikeAPI(state.userId, id);
+        await addLikeAPI(state.userId, id);
+        setLikeFront(true);
+        setLikeNumber(1);
       } catch (e) {
         console.log(e);
       }
@@ -47,7 +51,7 @@ export const Photocard = ({
           </Link>
           {includeDetails && title && <Title>{title}</Title>}
           {includeDetails && author && <Subtitle>{author}</Subtitle>}
-          <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
+          <FavButton liked={liked || likeFront} likes={likes + likeNumber} onClick={handleFavClick} />
         </>
       )}
     </Article>

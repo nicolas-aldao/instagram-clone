@@ -2,9 +2,17 @@ import axios from "axios";
 
 const baseUrl = "https://json-server-ruby.vercel.app";
 
-export const getFavsAPI = async () => {
+// export const getFavsAPI = async () => {
+//   try {
+//     const res = await axios.get(baseUrl + "/favs");
+//     return res;
+//   } catch (err) {
+//   }
+// };
+
+export const getFavsAPI = async (id) => {
   try {
-    const res = await axios.get(baseUrl + "/favs");
+    const res = await axios.get(baseUrl + "/photos/favorites/" + id);
     return res;
   } catch (err) {
   }
