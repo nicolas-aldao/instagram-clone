@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const baseUrl = "https://json-server-ruby.vercel.app";
+//const baseUrl = "http://localhost:3000";
 
 // export const getFavsAPI = async () => {
 //   try {
@@ -12,7 +13,7 @@ const baseUrl = "https://json-server-ruby.vercel.app";
 
 export const getFavsAPI = async (id) => {
   try {
-    const res = await axios.get(baseUrl + "/photos/favorites/" + id);
+    const res = await axios.get(`${baseUrl}/photos/favs/${id}`);
     return res;
   } catch (err) {
   }
@@ -32,9 +33,9 @@ export const getPhotosAPI = async (id) => {
   }
 };
 
-export const getPhotoAPI = async (id) => {
+export const getPhotoAPI = async (photoId, userId) => {
   try {
-    const res = await axios.get(baseUrl + "/photos/" + id);
+    const res = await axios.get(`${baseUrl}/photos/${photoId}/${userId}`);
     return res;
   } catch (err) {
     console.log("getPhotoAPI " + err);

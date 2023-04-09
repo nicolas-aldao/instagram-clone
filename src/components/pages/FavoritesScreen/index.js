@@ -22,7 +22,9 @@ export default () => {
     }
 
     try {
-      fetchMyAPI();
+      if (state?.userId) {
+        fetchMyAPI();
+      }
       return;
     } catch (err) {
       console.log(err);
@@ -42,8 +44,10 @@ export default () => {
               <Link key={fav._id} to={`/detail/${fav._id}`}>
                 <Image key={fav._id} src={fav.src} />
               </Link>
-            ))) : <p>You don't have favorites yet!</p>}
+            ))
+          ) : (
             <p>You don't have favorites yet!</p>
+          )}
         </Grid>
       </BasicLayout>
     ) : (

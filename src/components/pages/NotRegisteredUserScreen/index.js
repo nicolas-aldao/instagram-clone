@@ -11,25 +11,12 @@ export default () => {
     signIn({ email, password }, () => {
       console.log('logged');
     });
-    // .then(data => {
-    //   const { login } = data.data;
-    //   console.log(login);
-    //   activateAuth(login);
-    // });
   };
   const onSubmit = ({ email, password, firstname, lastname }) => {
-    //const input = { email, password };
-    //const variables = { input };
     signUp({ email, password, firstname, lastname }, () => {
       console.log('signup');
     });
-
-    // .then(data => {
-    //   const { signup } = data.data;
-    //   activateAuth(signup);
-    // });
   };
-
   // const errorMsg = state.errorMessage && 'The user already exists.';
 
   const errorMsgLogin =
