@@ -21,9 +21,6 @@ export const Input = styled.input`
   display: flex;
   align-self: center;
   width: calc(100% - 16px);
-  &[disabled] {
-    opacity: 0.3;
-  }
 `;
 
 export const Button = styled.button`
@@ -44,7 +41,4 @@ export const Title = styled.h2`
   font-weight: 500;
   padding: 8px 0;
 `;
-export const Error = styled.span`
-  color: red;
-  font-size: 14px;
-`;
+

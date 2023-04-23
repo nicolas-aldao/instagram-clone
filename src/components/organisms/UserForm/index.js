@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { useInputValue } from '../../../hooks/useInputValue'
-import { FormContainer, Form, Input, Button, Title, Error } from './styles'
+import { Badge } from '../../atoms/Badge';
+import { FormContainer, Form, Input, Button, Title } from './styles'
 
 export const UserForm = ({ onSubmit, title, disabled, error }) => {
   const email = useInputValue('')
@@ -21,7 +22,7 @@ export const UserForm = ({ onSubmit, title, disabled, error }) => {
         <Input placeholder='Email' {...email} disabled={disabled} />
         <Input placeholder='Password' type='password' {...password} disabled={disabled} />
         <Button disabled={disabled} >{title}</Button>
-        {error && <Error>{error}</Error>}
+        {error && <Badge content={error} fontColor='#d71919' backgroundColor='#FFCCBC'/>}
       </Form>
     </FormContainer>
   )
