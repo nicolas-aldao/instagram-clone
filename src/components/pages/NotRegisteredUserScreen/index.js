@@ -35,7 +35,7 @@ export default () => {
 
   return (
     <>
-      {true && (
+      {loading && (
         <SpinnerContainer isMobile={screenType.isMobile}>
           <SpinnerAtom />
         </SpinnerContainer>
