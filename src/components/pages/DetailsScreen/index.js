@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { Context as AuthContext } from '../../../AuthContext';
+import { Context } from '../../../Context';
 import { getPhotoAPI } from '../../../services/apiPetgram';
 import { BasicLayout } from '../../layouts/BasicLayout';
 import { Photocard } from '../../organisms/Photocard';
@@ -13,7 +13,7 @@ export default () => {
   const params = useParams();
   const {
     state: { userId },
-  } = useContext(AuthContext);
+  } = useContext(Context);
 
   useEffect(() => {
     async function fetchMyAPI() {

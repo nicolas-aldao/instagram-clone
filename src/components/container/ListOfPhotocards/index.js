@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Context as AuthContext } from '../../../AuthContext';
+import { Context } from '../../../Context';
 import { getPhotosAPI } from '../../../services/apiPetgram';
 import { ListOfPhotocardsComponent } from '../../organisms/ListOfPhotocardsComponent';
 
@@ -9,7 +9,7 @@ export const ListOfPhotocards = ({ categoryId }) => {
   const [datos, setDatos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(undefined);
-  const { state: { userId } } = useContext(AuthContext);
+  const { state: { userId } } = useContext(Context);
 
   useEffect(() => {
     async function fetchMyAPI() {

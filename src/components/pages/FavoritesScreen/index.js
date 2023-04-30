@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Context as AuthContext } from '../../../AuthContext';
+import { Context } from '../../../Context';
 import { getFavsAPI } from '../../../services/apiPetgram';
 import { BasicLayout } from '../../layouts/BasicLayout';
 import LoadingScreen from '../LoadingScreen';
@@ -10,7 +10,7 @@ export default () => {
   const [favs, setFavs] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(undefined);
-  const { state } = useContext(AuthContext);
+  const { state } = useContext(Context);
 
   useEffect(() => {
     async function fetchMyAPI() {

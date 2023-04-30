@@ -2,13 +2,12 @@ import React, { useState, useContext, useEffect } from 'react';
 import { SpinnerAtom } from '../../atoms/Spinner';
 import { UserForm } from '../../organisms/UserForm';
 import { ProfileForm } from '../../organisms/ProfileForm';
-import { Context as AuthContext } from '../../../AuthContext';
+import { Context } from '../../../Context';
 import { SpinnerContainer } from './styles';
 
 export default () => {
-  const { state, signIn, signUp, clearErrorMessages } = useContext(AuthContext);
+  const { state: { errorMessage, screenType }, signIn, signUp, clearErrorMessages } = useContext(Context);
   const [loading, setLoading] = useState(false);
-  console.log('🚀 ~ file: index.js:8 ~ state:', state);
 
   const onSubmitLogin = async ({ email, password }) => {
     setLoading(true);
@@ -32,12 +31,12 @@ export default () => {
   // const errorMsg = state.errorMessage && 'The user already exists.';
 
   const errorMsgLogin =
-    state.errorMessage && 'The user or password is incorrect.';
+    errorMessage && 'The user or password is incorrect.';
 
   return (
     <>
-      {loading && (
-        <SpinnerContainer>
+      {true && (
+        <SpinnerContainer isMobile={screenType.isMobile}>
           <SpinnerAtom />
         </SpinnerContainer>
       )}

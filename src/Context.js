@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import createDataContext from './createDataContext';
-import apiAuth from '../src/services/apiAuth';
+import apiAuth from './services/apiAuth';
 
-const authReducer = (state, action) => {
+const contextReducer = (state, action) => {
   switch (action.type) {
     case 'signin-or-signup':
       return {
@@ -23,6 +23,8 @@ const authReducer = (state, action) => {
       return { ...state, isAuth: true };
     case 'is_not_auth':
       return { ...state, isAuth: false };
+      case 'set_screen_type':
+        return { ...state, screenType: action.payload };
     default:
       return state;
   }
@@ -125,9 +127,18 @@ const tryLocalSignIn = dispatch => {
   };
 };
 
+const setScreenType = dispatch => {
+  return async (screenType) => {
+      dispatch({
+        type: 'set_screen_type',
+        payload: screenType,
+      });
+  };
+};
+
 export const { Provider, Context } = createDataContext(
-  authReducer,
-  { signUp, signIn, signOut, clearErrorMessages, tryLocalSignIn },
+  contextReducer,
+  { signUp, signIn, signOut, clearErrorMessages, tryLocalSignIn, setScreenType },
   {
     token: null,
     errorMessage: '',
@@ -135,5 +146,6 @@ export const { Provider, Context } = createDataContext(
     userId: null,
     firstname: null,
     lastname: null,
+    screenType: {}
   },
 );

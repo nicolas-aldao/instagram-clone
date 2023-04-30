@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Provider as AuthProvider } from './AuthContext';
+import { Provider as ContextProvider } from './Context';
+import VariablesContainer from './components/container/VariablesContainer';
 import { Header } from './components/organisms/Header';
 import { NavBar } from './components/organisms/NavBar';
 import { HomeScreen } from './components/pages/HomeScreen';
@@ -28,18 +29,20 @@ export const App = () => {
     <Suspense fallback={<div />}>
       <BrowserRouter>
         <GlobalStyle />
-        <AuthProvider>
-          <AppLayout />
-          <Routes>
-            <Route path="/" element={<HomeScreen />} />
-            <Route path="/pet/:id" element={<HomeScreen />} />
-            <Route path="/detail/:detailId" element={<DetailsScreen />} />
-            <Route path="/favs" element={<FavoritesScreen />} />
-            <Route path="/user" element={<UserScreen />} />
-            <Route path="*" element={<NotFoundScreen />} />
-          </Routes>
-          <NavBar />
-        </AuthProvider>
+        <ContextProvider>
+          <VariablesContainer>
+            <AppLayout />
+            <Routes>
+              <Route path="/" element={<HomeScreen />} />
+              <Route path="/pet/:id" element={<HomeScreen />} />
+              <Route path="/detail/:detailId" element={<DetailsScreen />} />
+              <Route path="/favs" element={<FavoritesScreen />} />
+              <Route path="/user" element={<UserScreen />} />
+              <Route path="*" element={<NotFoundScreen />} />
+            </Routes>
+            <NavBar />
+          </VariablesContainer>
+        </ContextProvider>
       </BrowserRouter>
     </Suspense>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Context as AuthContext } from '../../../AuthContext';
+import { Context } from '../../../Context';
 import { addLikeAPI, addDislikeAPI } from '../../../services/apiPetgram';
 import { FavButton } from '../../atoms/FavButton';
 import { useNearScreen } from '../../../hooks/useNearScreen';
@@ -16,7 +16,7 @@ export const Photocard = ({
   includeDetails = false,
 }) => {
   const [show, element] = useNearScreen();
-  const { state } = useContext(AuthContext);
+  const { state } = useContext(Context);
   const [likeFront, setLikeFront] = useState(liked);
   const [likeNumber, setLikeNumber] = useState(likes);
 
