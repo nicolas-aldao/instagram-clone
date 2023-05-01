@@ -19,7 +19,6 @@ export default () => {
     async function fetchMyAPI() {
       setLoading(true);
       let res = await getPhotoAPI(params.detailId, userId);
-      console.log('🚀 ~ file: index.js:20 ~ fetchMyAPI ~ res:', res);
       setDatos(res.data);
       setLoading(false);
       return;

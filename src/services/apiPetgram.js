@@ -3,14 +3,6 @@ import axios from "axios";
 const baseUrl = "https://json-server-ruby.vercel.app";
 //const baseUrl = "http://localhost:3000";
 
-// export const getFavsAPI = async () => {
-//   try {
-//     const res = await axios.get(baseUrl + "/favs");
-//     return res;
-//   } catch (err) {
-//   }
-// };
-
 export const getFavsAPI = async (id) => {
   try {
     const res = await axios.get(`${baseUrl}/photos/favs/${id}`);
@@ -62,7 +54,6 @@ export const addDislikeAPI = async (userId, photoId) => {
         photoId: photoId
       }
     });
-    console.log("🚀 ~ file: apiPetgram.js:68 ~ addDislikeAPI ~ res:", res)
     return res;
   } catch (err) {
     console.log(err);

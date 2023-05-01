@@ -24,11 +24,7 @@ export default () => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    console.log('loading :' + loading);
-  }, [loading]);
-
-  // const errorMsg = state.errorMessage && 'The user already exists.';
+  const errorMsg = errorMessage && 'The user already exists.';
 
   const errorMsgLogin =
     errorMessage && 'The user or password is incorrect.';
@@ -42,7 +38,7 @@ export default () => {
       )}
       <ProfileForm
         // disabled={loading} // antes: loading
-        error={errorMsgLogin}
+        error={errorMsg}
         title="Sign up"
         onSubmit={onSubmit}
       />
