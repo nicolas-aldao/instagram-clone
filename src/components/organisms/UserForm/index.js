@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useContext} from 'react'
 import { useInputValue } from '../../../hooks/useInputValue'
 import { Badge } from '../../atoms/Badge';
+import { Context } from '../../../Context';
 import { FormContainer, Form, Input, Button, Title } from './styles'
 
-export const UserForm = ({ onSubmit, title, disabled, error }) => {
+export const UserForm = ({ title, disabled, onLoading }) => {
   const email = useInputValue('')
   const password = useInputValue('')
+  const {
+    state: { error, screenType },
+    signIn,
+    signUp,
+    clearErrorMessages,
+  } = useContext(Context);
 
   const handleSubmit = (event)=> {
     event.preventDefault()
@@ -15,6 +22,14 @@ export const UserForm = ({ onSubmit, title, disabled, error }) => {
     })
 }
 
+  const onSubmit = async ({ email, password }) => {
+    onLoading(true);
+    await signIn({ email, password }, () => {
+      console.log('logged');
+    });
+    onLoading(false);
+  };
+
   return (
     <FormContainer>
       <Form disabled={disabled} onSubmit={handleSubmit}>
@@ -22,7 +37,7 @@ export const UserForm = ({ onSubmit, title, disabled, error }) => {
         <Input placeholder='Email' {...email} disabled={disabled} />
         <Input placeholder='Password' type='password' {...password} disabled={disabled} />
         <Button disabled={disabled} >{title}</Button>
-        {error && <Badge content={error} fontColor='#d71919' backgroundColor='#FFCCBC'/>}
+        {error?.type === 'login' && <Badge content={error?.msg} fontColor='#d71919' backgroundColor='#FFCCBC'/>}
       </Form>
     </FormContainer>
   )

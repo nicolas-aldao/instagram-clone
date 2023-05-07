@@ -6,7 +6,7 @@ const contextReducer = (state, action) => {
   switch (action.type) {
     case 'signin-or-signup':
       return {
-        errorMessage: '',
+        error: { type: '', msg: ''},
         token: action.payload.token,
         userId: action.payload.userId,
         email: action.payload.email,
@@ -14,11 +14,11 @@ const contextReducer = (state, action) => {
         lastname: action.payload.lastname,
       };
     case 'add_error':
-      return { ...state, errorMessage: action.payload };
+      return { ...state, error: { type: action.payload.type, msg: action.payload.msg} };
     case 'clear_error_message':
-      return { ...state, errorMessage: '' };
+      return { ...state, error: '' };
     case 'signout':
-      return { token: null, errorMessage: '' };
+      return { token: null, error: '' };
     case 'is_auth':
       return { ...state, isAuth: true };
     case 'is_not_auth':
@@ -57,7 +57,7 @@ const signUp = dispatch => {
     } catch (err) {
       dispatch({
         type: 'add_error',
-        payload: err.response.data.error,
+        payload: { type: 'signup', msg: err.response.data.error },
       });
     }
   };
@@ -85,7 +85,7 @@ const signIn = dispatch => {
     } catch (err) {
       dispatch({
         type: 'add_error',
-        payload: err.response.data.error,
+        payload: { type: 'login', msg: err.response.data.error },
       });
     }
   };
@@ -141,7 +141,7 @@ export const { Provider, Context } = createDataContext(
   { signUp, signIn, signOut, clearErrorMessages, tryLocalSignIn, setScreenType },
   {
     token: null,
-    errorMessage: '',
+    error: { type: '', msg: ''},
     isAuth: false,
     userId: null,
     firstname: null,

@@ -14,44 +14,19 @@ export default () => {
   } = useContext(Context);
   const [loading, setLoading] = useState(false);
 
-  const onSubmitLogin = async ({ email, password }) => {
-    setLoading(true);
-    await signIn({ email, password }, () => {
-      console.log('logged');
-    });
-    setLoading(false);
+  const handleOnLoading = propValue => {
+    setLoading(propValue);
   };
-  const onSubmit = async ({ email, password, firstname, lastname }) => {
-    setLoading(true);
-    await signUp({ email, password, firstname, lastname }, () => {
-      console.log('signup');
-    });
-    setLoading(false);
-  };
-
-  const errorMsg = errorMessage;
-
-  const errorMsgLogin = errorMessage;
 
   return (
     <>
       {loading && (
-        <SpinnerContainer isMobile={screenType.isMobile}>
+        <SpinnerContainer isMobile={screenType?.isMobile}>
           <SpinnerAtom />
         </SpinnerContainer>
       )}
-      <ProfileForm
-        // disabled={loading} // antes: loading
-        error={errorMsg}
-        title="Sign up"
-        onSubmit={onSubmit}
-      />
-      <UserForm
-        // disabled={loading} // antes: loadingLogin
-        error={errorMsgLogin}
-        title="Sign in"
-        onSubmit={onSubmitLogin}
-      />
+      <ProfileForm onLoading={handleOnLoading} title="Sign up" />
+      <UserForm onLoading={handleOnLoading} title="Sign in" />
     </>
   );
 };
