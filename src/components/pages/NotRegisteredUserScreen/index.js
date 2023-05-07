@@ -6,7 +6,12 @@ import { Context } from '../../../Context';
 import { SpinnerContainer } from './styles';
 
 export default () => {
-  const { state: { errorMessage, screenType }, signIn, signUp, clearErrorMessages } = useContext(Context);
+  const {
+    state: { errorMessage, screenType },
+    signIn,
+    signUp,
+    clearErrorMessages,
+  } = useContext(Context);
   const [loading, setLoading] = useState(false);
 
   const onSubmitLogin = async ({ email, password }) => {
@@ -24,10 +29,9 @@ export default () => {
     setLoading(false);
   };
 
-  const errorMsg = errorMessage && 'The user already exists.';
+  const errorMsg = errorMessage;
 
-  const errorMsgLogin =
-    errorMessage && 'The user or password is incorrect.';
+  const errorMsgLogin = errorMessage;
 
   return (
     <>

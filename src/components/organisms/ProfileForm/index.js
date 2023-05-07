@@ -21,11 +21,9 @@ export const ProfileForm = ({ onSubmit, title, disabled, error }) => {
     event.preventDefault();
     if (
       email.value === '' ||
-      password.value === '' ||
-      firstname.value === '' ||
-      lastname.value === ''
+      password.value === ''
     ) {
-      setFrontError('All fields are required');
+      setFrontError('User and password fields are required');
       return;
     }
     onSubmit({
@@ -40,7 +38,7 @@ export const ProfileForm = ({ onSubmit, title, disabled, error }) => {
     <FormContainer>
       <Form disabled={disabled} onSubmit={handleSubmit}>
         <Title>{title}</Title>
-        <Input placeholder="Email" {...email} disabled={disabled} />
+        <Input placeholder="User" {...email} disabled={disabled} />
         <Input
           placeholder="Password"
           type="password"

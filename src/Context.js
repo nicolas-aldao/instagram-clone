@@ -57,7 +57,7 @@ const signUp = dispatch => {
     } catch (err) {
       dispatch({
         type: 'add_error',
-        payload: 'Something went wrong with sign up',
+        payload: err.response.data.error,
       });
     }
   };
@@ -85,7 +85,7 @@ const signIn = dispatch => {
     } catch (err) {
       dispatch({
         type: 'add_error',
-        payload: 'Something went wrong with sign in',
+        payload: err.response.data.error,
       });
     }
   };
