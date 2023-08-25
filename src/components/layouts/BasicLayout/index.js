@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { ListOfCategories } from '../../../components/organisms/ListOfCategories';
 import { Div, Title, Subtitle } from './styles';
 
-export const BasicLayout = ({ children, title, subtitle, showCategories }) => {
+export const BasicLayout = ({ children, title, subtitle, showCategories, marginTop }) => {
   return (
     <>
       <Helmet>
@@ -13,7 +13,7 @@ export const BasicLayout = ({ children, title, subtitle, showCategories }) => {
       <Div>
         {showCategories && <ListOfCategories />}
         <div
-          style={{ position: 'relative', top: '110px' }}>
+          style={{ position: 'relative', top: marginTop ? marginTop : '16px' }}>
           {title && <Title>{title}</Title>}
           {subtitle && <Subtitle>{subtitle}</Subtitle>}
           {children}

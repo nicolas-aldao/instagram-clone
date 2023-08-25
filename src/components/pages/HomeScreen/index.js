@@ -6,7 +6,7 @@ import { ListOfPhotocards } from '../../container/ListOfPhotocards';
 export const HomeScreen = () => {
   const params = useParams();
   return (
-    <BasicLayout title="" subtitle="" showCategories>
+    <BasicLayout title="" subtitle="" showCategories marginTop="110px">
       <ListOfPhotocards categoryId={params.id} />
     </BasicLayout>
   );

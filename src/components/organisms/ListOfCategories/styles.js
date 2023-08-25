@@ -22,7 +22,6 @@ export const List = styled.ul`
   right: 0;
   overflow: scroll;
   ${fadeIn({ time: '0.5s' })};
-
 `;
 
 export const Item = styled.li`
