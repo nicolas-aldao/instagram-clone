@@ -60,6 +60,15 @@ export const addDislikeAPI = async (userId, photoId) => {
   }
 };
 
+export const getPhotoByCategory = async (categoryId) => {
+  try {
+    const res = await axios.get(baseUrl + "/photos/category/" + categoryId);
+    return res;
+  } catch (err) {
+    console.log("getPhotoAPI " + err);
+  }
+};
+
 export const getPhotoUserByUser = async (userId) => {
   try {
     const res = await axios.get(baseUrl + "/photouser/user/" + userId);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Context } from '../../../Context';
-import { getPhotosAPI } from '../../../services/apiPetgram';
+import { getPhotosAPI, getPhotoByCategory } from '../../../services/apiPetgram';
 import { ListOfPhotocardsComponent } from '../../organisms/ListOfPhotocardsComponent';
 
 export const ListOfPhotocards = ({ categoryId }) => {
@@ -8,13 +8,18 @@ export const ListOfPhotocards = ({ categoryId }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(undefined);
   const {
-    state: { userId },
+    state: { userId, categorySelected },
   } = useContext(Context);
+  let res;
 
   useEffect(() => {
     async function fetchMyAPI() {
       setLoading(true);
-      let res = await getPhotosAPI(userId);
+      if (categorySelected !== null && categorySelected !== undefined) {
+        res = await getPhotoByCategory(categorySelected);
+      } else {
+        res = await getPhotosAPI(userId);
+      }
       setDatos(res.data);
       return;
     }
@@ -26,7 +31,7 @@ export const ListOfPhotocards = ({ categoryId }) => {
       console.log(err);
       setError(err);
     }
-  }, []);
+  }, [categorySelected]);
 
   useEffect(() => {
     if (datos.length > 0) {

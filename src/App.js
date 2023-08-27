@@ -29,6 +29,7 @@ export const App = () => {
     // TODO: ADD NAMES TO CATEGORIES
     // TODO: ADD NUMBER OF PAINTINGS LIKED IN PROFILE INFO
     // TODO: ADD FAVORITE PAINTING GENRE ACCORDING PAINTINGS LIKED
+    // TODO: HANDLE WHEN IMAGE DOESN'T LOADING CORRECTLY
   return (
     <Suspense fallback={<div />}>
       <BrowserRouter>
@@ -38,7 +39,7 @@ export const App = () => {
             <AppLayout />
             <Routes>
               <Route path="/" element={<HomeScreen />} />
-              <Route path="/categories/:id" element={<HomeScreen />} />
+              {/* <Route path="/categories/:id" element={<HomeScreen />} /> */}
               <Route path="/detail/:detailId" element={<DetailsScreen />} />
               <Route path="/favs" element={<FavoritesScreen />} />
               <Route path="/user" element={<UserScreen />} />

@@ -6,7 +6,7 @@ const contextReducer = (state, action) => {
   switch (action.type) {
     case 'signin-or-signup':
       return {
-        error: { type: '', msg: ''},
+        error: { type: '', msg: '' },
         token: action.payload.token,
         userId: action.payload.userId,
         email: action.payload.email,
@@ -14,7 +14,10 @@ const contextReducer = (state, action) => {
         lastname: action.payload.lastname,
       };
     case 'add_error':
-      return { ...state, error: { type: action.payload.type, msg: action.payload.msg} };
+      return {
+        ...state,
+        error: { type: action.payload.type, msg: action.payload.msg },
+      };
     case 'clear_error_message':
       return { ...state, error: '' };
     case 'signout':
@@ -23,8 +26,10 @@ const contextReducer = (state, action) => {
       return { ...state, isAuth: true };
     case 'is_not_auth':
       return { ...state, isAuth: false };
-      case 'set_screen_type':
-        return { ...state, screenType: action.payload };
+    case 'set_screen_type':
+      return { ...state, screenType: action.payload };
+    case 'set_category_id':
+      return { ...state, categorySelected: action.payload };
     default:
       return state;
   }
@@ -128,24 +133,43 @@ const tryLocalSignIn = dispatch => {
 };
 
 const setScreenType = dispatch => {
-  return async (screenType) => {
-      dispatch({
-        type: 'set_screen_type',
-        payload: screenType,
-      });
+  return async screenType => {
+    dispatch({
+      type: 'set_screen_type',
+      payload: screenType,
+    });
+  };
+};
+
+const setCategorySelected = dispatch => {
+  console.log('entra dispa')
+  return async categoryId => {
+    dispatch({
+      type: 'set_category_id',
+      payload: categoryId,
+    });
   };
 };
 
 export const { Provider, Context } = createDataContext(
   contextReducer,
-  { signUp, signIn, signOut, clearErrorMessages, tryLocalSignIn, setScreenType },
+  {
+    signUp,
+    signIn,
+    signOut,
+    clearErrorMessages,
+    tryLocalSignIn,
+    setScreenType,
+    setCategorySelected,
+  },
   {
     token: null,
-    error: { type: '', msg: ''},
+    error: { type: '', msg: '' },
     isAuth: false,
     userId: null,
     firstname: null,
     lastname: null,
-    screenType: {}
+    categorySelected: null,
+    screenType: {},
   },
 );

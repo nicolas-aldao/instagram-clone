@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Context } from '../../../Context';
 import { LoadingCategory } from '../../atoms/LoadingCategory';
 import { Category } from '../../atoms/Category';
 import { List, Item } from './styles';
 
 export const ListOfCategories = () => {
   const { categories, loading } = useCategoriesData();
+  const { setCategorySelected } = useContext(Context);
   const loadingArray = [1, 2, 3, 4, 5];
 
   function useCategoriesData() {
@@ -34,12 +36,19 @@ export const ListOfCategories = () => {
       {loading
         ? loadingArray.map(category => (
             <Item key={category}>
-              <LoadingCategory {...category} path={`/categories/${category.id}`} />
+              <LoadingCategory
+                {...category}
+                path={`/categories/${category.id}`}
+              />
             </Item>
           ))
         : categories.map(category => (
-            <Item key={category.id}>
-              <Category {...category} path={`/categories/${category.id}`} />
+            <Item
+              key={category.id}
+              onClick={() => {
+                setCategorySelected(category.id);
+              }}>
+              <Category {...category} />
             </Item>
           ))}
     </List>
