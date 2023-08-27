@@ -1,7 +1,6 @@
 import React from 'react';
 import { LoadingPhotocard } from '../LoadingPhotocard';
 import { Photocard } from '../Photocard';
-//import { PhotocardSkeleton } from "../../../skeletons/PhotocardSkeleton";
 
 export const ListOfPhotocardsComponent = ({ data = [], isLoading = false }) => {
   const loadingCards = [1, 2, 3, 4, 5];
@@ -25,14 +24,3 @@ export const ListOfPhotocardsComponent = ({ data = [], isLoading = false }) => {
     </ul>
   );
 };
-// if (loading) {
-//   return (
-//     <>
-//       <p>Cargando...</p>
-//       {/* <PhotocardSkeleton />
-//       <PhotocardSkeleton />
-//       <PhotocardSkeleton /> */}
-//     </>
-//   );
-// }
-//};
