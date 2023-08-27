@@ -30,14 +30,14 @@ export default () => {
       console.log(err);
       setError(err);
     }
-  }, []);
+  }, [state?.userId]);
 
   if (loading) return <LoadingScreen />;
   if (error) return <pre>{error.message}</pre>;
 
   const Page = () =>
     state.isAuth ? (
-      <BasicLayout title="Favorites" subtitle="Here are your favorite photos">
+      <BasicLayout title="Favorites" subtitle="Here are your favorite paintings">
         <Grid>
           {favs.length > 0 ? (
             favs.map(fav => (

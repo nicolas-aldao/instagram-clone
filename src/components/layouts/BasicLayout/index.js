@@ -1,7 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { ListOfCategories } from '../../../components/organisms/ListOfCategories';
-import { Div, Title, Subtitle } from './styles';
+import { Title, Subtitle } from '../../atoms/Typography';
+import { Div } from './styles';
 
 export const BasicLayout = ({ children, title, subtitle, showCategories, marginTop }) => {
   return (

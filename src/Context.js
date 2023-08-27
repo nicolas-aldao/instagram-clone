@@ -98,7 +98,7 @@ const signOut = dispatch => async callback => {
     dispatch({ type: 'is_not_auth' });
     callback();
   } catch (err) {
-    console.log('🚀 ~ file: AuthContext.js:73 ~ signOut ~ err', err);
+    console.log(err);
   }
 };
 

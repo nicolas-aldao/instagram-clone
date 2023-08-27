@@ -1,7 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { SpinnerAtom } from '../../atoms/Spinner';
-import { UserForm } from '../../organisms/UserForm';
-import { ProfileForm } from '../../organisms/ProfileForm';
+import { SignInForm } from '../../organisms/SignInForm';
+import { SignUpForm } from '../../organisms/SignUpForm';
+import { BasicLayout } from '../../layouts/BasicLayout';
 import { Context } from '../../../Context';
 import { SpinnerContainer } from './styles';
 
@@ -19,14 +20,14 @@ export default () => {
   };
 
   return (
-    <>
+    <BasicLayout title="Welcome to Artgram!">
       {loading && (
         <SpinnerContainer isMobile={screenType?.isMobile}>
           <SpinnerAtom />
         </SpinnerContainer>
       )}
-      <ProfileForm onLoading={handleOnLoading} title="Sign up" />
-      <UserForm onLoading={handleOnLoading} title="Sign in" />
-    </>
+      <SignUpForm onLoading={handleOnLoading} title="Sign up" />
+      <SignInForm onLoading={handleOnLoading} title="Sign in" />
+    </BasicLayout>
   );
 };

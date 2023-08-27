@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Context } from '../../../Context';
 import { BasicLayout } from '../../layouts/BasicLayout';
 import { SubmitButton } from '../../atoms/SubmitButton';
@@ -6,7 +6,6 @@ import NotRegisteredUserScreen from '../NotRegisteredUserScreen';
 
 export default () => {
   const { state, signOut } = useContext(Context);
-  console.log('🚀 ~ file: index.js:14 ~ state:', state);
 
   return state.isAuth ? (
     <BasicLayout title="My account" subtitle="Account Information">

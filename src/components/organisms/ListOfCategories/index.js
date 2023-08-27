@@ -17,9 +17,14 @@ export const ListOfCategories = () => {
         .then(res => res.json())
         .then(response => {
           setCategories(response);
-          setLoading(false);
         });
     }, []);
+
+    useEffect(() => {
+      if (categories.length > 0) {
+        setLoading(false);
+      }
+    }, [categories]);
 
     return { categories, loading };
   }

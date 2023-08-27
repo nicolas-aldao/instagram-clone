@@ -9,9 +9,9 @@ import {
   Button,
   Title,
   Error,
-} from '../UserForm/styles';
+} from '../SignInForm/styles';
 
-export const ProfileForm = ({ title, disabled, onLoading }) => {
+export const SignUpForm = ({ title, disabled, onLoading }) => {
   const email = useInputValue('');
   const password = useInputValue('');
   const firstname = useInputValue('');
