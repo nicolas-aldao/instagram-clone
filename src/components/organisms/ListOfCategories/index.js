@@ -34,12 +34,12 @@ export const ListOfCategories = () => {
       {loading
         ? loadingArray.map(category => (
             <Item key={category}>
-              <LoadingCategory {...category} path={`/pet/${category.id}`} />
+              <LoadingCategory {...category} path={`/categories/${category.id}`} />
             </Item>
           ))
         : categories.map(category => (
             <Item key={category.id}>
-              <Category {...category} path={`/pet/${category.id}`} />
+              <Category {...category} path={`/categories/${category.id}`} />
             </Item>
           ))}
     </List>

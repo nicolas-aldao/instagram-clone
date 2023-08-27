@@ -24,7 +24,7 @@ export const App = () => {
       <Header />
     </>
   );
-
+    // TODO: SELECT ONE CATEGORY AND FILTER PHOTOS BY CATEGORY
   return (
     <Suspense fallback={<div />}>
       <BrowserRouter>
@@ -34,7 +34,7 @@ export const App = () => {
             <AppLayout />
             <Routes>
               <Route path="/" element={<HomeScreen />} />
-              <Route path="/pet/:id" element={<HomeScreen />} />
+              <Route path="/categories/:id" element={<HomeScreen />} />
               <Route path="/detail/:detailId" element={<DetailsScreen />} />
               <Route path="/favs" element={<FavoritesScreen />} />
               <Route path="/user" element={<UserScreen />} />
