@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { BROKEN_IMAGE_URL } from '../../../constants';
 import { Context } from '../../../Context';
 import { addLikeAPI, addDislikeAPI } from '../../../services/apiPetgram';
 import { FavButton } from '../../atoms/FavButton';
@@ -19,6 +20,10 @@ export const Photocard = ({
   const { state } = useContext(Context);
   const [likeFront, setLikeFront] = useState(liked);
   const [likeNumber, setLikeNumber] = useState(likes);
+
+  const imageOnError = event => {
+    event.currentTarget.src = BROKEN_IMAGE_URL;
+  };
 
   const handleLike = async () => {
     if (state.userId) {
@@ -58,7 +63,7 @@ export const Photocard = ({
               query: { name: 'John Doe' },
             }}>
             <ImgWrapper>
-              <Img src={src} />
+              <Img src={src} onError={imageOnError} />
             </ImgWrapper>
           </Link>
           {includeDetails && title && <Title>{title}</Title>}

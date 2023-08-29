@@ -1,15 +1,14 @@
 import React from 'react';
+import { BROKEN_IMAGE_URL } from '../../../constants';
 import { Image } from './styles';
-const DEFAULT_IMAGE = 'https://i.imgur.com/dJa0Hpl.jpeg';
-const BrokenImage =
-  'https://developers.google.com/static/maps/documentation/maps-static/images/error-image-generic.png';
+
 const imageOnError = event => {
-  event.currentTarget.src = BrokenImage;
+  event.currentTarget.src = BROKEN_IMAGE_URL;
   event.currentTarget.style.maxWidth = '75px';
   event.currentTarget.style.maxHeight = '75px';
   event.currentTarget.style.objectFit = 'none';
 };
 
-export const Category = ({ cover = DEFAULT_IMAGE }) => (
+export const Category = ({ cover }) => (
   <Image src={cover} onError={imageOnError} />
 );
