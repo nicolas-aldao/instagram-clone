@@ -86,3 +86,14 @@ export const getPhotoUserByPhoto = async (photoId) => {
     console.log("getPhotoAPI " + err);
   }
 };
+
+export const getUserFavoriteCategory = async (userId) => {
+  console.log('entro nueva func')
+  try {
+    const res = await axios.get(baseUrl + "/photos/favs/genre/" + userId);
+    console.log('ress ', res)
+    return res;
+  } catch (err) {
+    console.log("getUserFavoriteCategory " + err);
+  }
+};

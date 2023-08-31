@@ -142,7 +142,6 @@ const setScreenType = dispatch => {
 };
 
 const setCategorySelected = dispatch => {
-  console.log('entra dispa')
   return async categoryId => {
     dispatch({
       type: 'set_category_id',
