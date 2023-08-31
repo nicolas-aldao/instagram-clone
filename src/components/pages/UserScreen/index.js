@@ -10,13 +10,27 @@ export default () => {
   const [favoriteGenres, setFavoriteGenres] = useState([]);
   const [genresString, setGenresString] = useState('');
 
+  function formatWordList(words) {
+    const length = words.length;
+
+    if (length === 1) {
+      return `Your favorite genre is ${words[0]}`;
+    } else if (length === 2) {
+      return `Your favorite genres are ${words[0]} and ${words[1]}`;
+    } else if (length === 4) {
+      return `You like all genres of art! 🎉`;
+    } else {
+      const formattedWords = words.slice(0, -1).join(', ');
+      return `Your favorite genres are ${formattedWords}, and ${words[length - 1]}`;
+    }
+  }
+
   useEffect(() => {
     if (favoriteGenres.length > 0) {
-      favoriteGenres.map((genre, index) =>
-        setGenresString(genresString + `${genre} y `),
-      );
+      setGenresString(formatWordList(favoriteGenres));
     } else {
-      setGenresString('not genres liked');
+      setGenresString(`You don't have any favorite artistic genre yet 😔\n
+        You can take a look to the paintings and give a like if you like some!`);
     }
   }, [favoriteGenres]);
 
@@ -43,7 +57,7 @@ export default () => {
         Welcome {state.firstname ? state.firstname : state.email}{' '}
         {` ${state.lastname}`}!
       </h4>
-      {genresString ? <h3>{genresString}</h3> : null}
+      {genresString ? <h5>{genresString}</h5> : null}
       <SubmitButton text="Logout" onClick={() => signOut()} />
     </BasicLayout>
   ) : (
