@@ -6,9 +6,14 @@ export const FavButton = ({ liked, likes, onClick }) => {
   const Icon = liked ? MdFavorite : MdFavoriteBorder;
 
   return (
-    <Button onClick={onClick}>
-      <Icon size="32px" color={liked ? '#ff2f40' : 'black'}/>
-      {likes} likes!
+    <Button>
+      <Icon
+        size="32px"
+        color={liked ? '#ff2f40' : 'black'}
+        style={{ cursor: 'pointer' }}
+        onClick={onClick}
+      />
+      {likes} like{likes > 1 ? 's' : ''}
     </Button>
   );
 };

@@ -12,3 +12,8 @@ export const SubtitleStyle = styled.h2`
   color: #333;
   padding-bottom: 4px;
 `;
+
+export const BasicTypoStyle = styled.p`
+  font-size: 14px;
+  text-align: center;
+`;

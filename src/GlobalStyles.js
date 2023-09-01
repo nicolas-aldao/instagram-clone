@@ -45,7 +45,7 @@ export const GlobalStyle = createGlobalStyle`
             outline: 0;
     }
     body {
-            background: #fefefe;
+            background: var(--background-color);
             height: 100vh;
             margin: 0 auto;
             max-width: 500px;
@@ -57,5 +57,9 @@ export const GlobalStyle = createGlobalStyle`
             overflow-x: hidden;
             min-height: 100vh;
             padding-bottom: 10px;
+    }
+
+    p {
+      color: var(--grey-6);
     }
 `;

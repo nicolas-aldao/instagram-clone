@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Context } from '../../../Context';
+import { BasicTypo } from '../../atoms/Typography';
 import { LoadingCategory } from '../../atoms/LoadingCategory';
 import { Category } from '../../atoms/Category';
 import { List, Item } from './styles';
@@ -49,6 +50,7 @@ export const ListOfCategories = () => {
                 setCategorySelected(category.id);
               }}>
               <Category {...category} />
+              <BasicTypo>{category.name}</BasicTypo>
             </Item>
           ))}
     </List>

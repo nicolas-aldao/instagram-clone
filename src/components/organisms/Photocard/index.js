@@ -5,6 +5,7 @@ import { Context } from '../../../Context';
 import { addLikeAPI, addDislikeAPI } from '../../../services/apiPetgram';
 import { FavButton } from '../../atoms/FavButton';
 import { useNearScreen } from '../../../hooks/useNearScreen';
+import { Modal } from '../Modal';
 import { Article, ImgWrapper, Img, Title, Subtitle } from './styles';
 
 export const Photocard = ({
@@ -20,6 +21,7 @@ export const Photocard = ({
   const { state } = useContext(Context);
   const [likeFront, setLikeFront] = useState(liked);
   const [likeNumber, setLikeNumber] = useState(likes);
+  const [showModal, setShowModal] = useState(false);
 
   const imageOnError = event => {
     event.currentTarget.src = BROKEN_IMAGE_URL;
@@ -53,6 +55,10 @@ export const Photocard = ({
     }
   };
 
+  const showModalFunction = async () => {
+    setShowModal(true);
+  };
+
   return (
     <Article ref={element}>
       {show && (
@@ -71,10 +77,23 @@ export const Photocard = ({
           <FavButton
             liked={likeFront}
             likes={likeNumber}
-            onClick={likeFront ? handleDislike : handleLike}
+            onClick={
+              state.userId
+                ? likeFront
+                  ? handleDislike
+                  : handleLike
+                : showModalFunction
+            }
           />
         </>
       )}
+      {showModal ? (
+        <Modal
+          onClick={() => {
+            console.log('navigate to user screen');
+          }}
+        />
+      ) : null}
     </Article>
   );
 };
