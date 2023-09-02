@@ -5,7 +5,6 @@ import { Context } from '../../../Context';
 import { addLikeAPI, addDislikeAPI } from '../../../services/apiPetgram';
 import { FavButton } from '../../atoms/FavButton';
 import { useNearScreen } from '../../../hooks/useNearScreen';
-import { Modal } from '../Modal';
 import { Article, ImgWrapper, Img, Title, Subtitle } from './styles';
 
 export const Photocard = ({
@@ -87,13 +86,8 @@ export const Photocard = ({
           />
         </>
       )}
-      {showModal ? (
-        <Modal
-          onClick={() => {
-            console.log('navigate to user screen');
-          }}
-        />
-      ) : null}
+      {/* {showModal ? ( */}
+      {/* ) : null} */}
     </Article>
   );
 };

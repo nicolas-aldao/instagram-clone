@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
-export const ModalContainer = styled.div`
+export const ModalStyled = styled.div`
   position: fixed;
-  z-index: 2;
-  height: 100px;
-  height: 100px;
-  width: 100px;
-  background: green;
-  top: 50%;
-  left: 42%;
+  background-color: var(--background-color);
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  border-radius: 20px;
+  top: 40%;
+  left: calc(50% - 100px);;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
 `;
