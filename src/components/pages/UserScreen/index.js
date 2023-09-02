@@ -54,8 +54,8 @@ export default () => {
   return state.isAuth ? (
     <BasicLayout title="My account" subtitle="Account Information">
       <h4>
-        Welcome {state.firstname ? state.firstname : state.email}{' '}
-        {` ${state.lastname}`}!
+        Fullname: {state.firstname ? state.firstname : state.email}{' '}
+        {` ${state.lastname}`}
       </h4>
       {genresString ? <h5>{genresString}</h5> : null}
       <SubmitButton text="Logout" onClick={() => signOut()} />

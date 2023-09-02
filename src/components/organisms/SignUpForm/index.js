@@ -26,9 +26,13 @@ export const SignUpForm = ({ title, disabled, onLoading }) => {
 
   const onSubmit = async ({ email, password, firstname, lastname }) => {
     onLoading(true);
-    await signUp({ email, password, firstname, lastname }, () => {
-      console.log('signup');
-    });
+    try {
+      await signUp({ email, password, firstname, lastname }, () => {
+        console.log('signup');
+      });
+    } catch (e) {
+      console.log('e ', e);
+    }
     onLoading(false);
   };
 

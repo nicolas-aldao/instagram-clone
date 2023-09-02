@@ -8,7 +8,7 @@ export const BasicLayout = ({ children, title, subtitle, showCategories, marginT
   return (
     <>
       <Helmet>
-        {title && <title> Artgram | {title} </title>}
+        <title> Artgram </title>
         {subtitle && <meta name="description" content={subtitle} />}
       </Helmet>
       <Div>

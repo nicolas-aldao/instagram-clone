@@ -24,9 +24,13 @@ export const SignInForm = ({ title, disabled, onLoading }) => {
 
   const onSubmit = async ({ email, password }) => {
     onLoading(true);
-    await signIn({ email, password }, () => {
-      console.log('logged');
-    });
+    try {
+      await signIn({ email, password }, () => {
+        console.log('logged');
+      });
+    } catch (e) {
+      console.log('e ', e);
+    }
     onLoading(false);
   };
 
