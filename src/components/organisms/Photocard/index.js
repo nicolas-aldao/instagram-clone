@@ -20,7 +20,7 @@ export const Photocard = ({
   const { state } = useContext(Context);
   const [likeFront, setLikeFront] = useState(liked);
   const [likeNumber, setLikeNumber] = useState(likes);
-  const [showModal, setShowModal] = useState(false);
+  const { setNotRegisteredModal } = useContext(Context);
 
   const imageOnError = event => {
     event.currentTarget.src = BROKEN_IMAGE_URL;
@@ -55,7 +55,7 @@ export const Photocard = ({
   };
 
   const showModalFunction = async () => {
-    setShowModal(true);
+    setNotRegisteredModal(true);
   };
 
   return (
@@ -86,8 +86,6 @@ export const Photocard = ({
           />
         </>
       )}
-      {/* {showModal ? ( */}
-      {/* ) : null} */}
     </Article>
   );
 };

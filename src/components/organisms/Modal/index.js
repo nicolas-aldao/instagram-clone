@@ -1,16 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Context } from '../../../Context';
 import { SubmitButton } from '../../atoms/SubmitButton';
 import { Subtitle } from '../../atoms/Typography';
-import { ModalStyled } from './styles';
+import { ModalStyled, ModalHeader, CloseButton } from './styles';
 
 export const Modal = () => {
+  const { setNotRegisteredModal } = useContext(Context);
+
+  const showModalFunction = async () => {
+    setNotRegisteredModal(false);
+  };
+
   return (
-    <Link to="/user">
+    <>
       <ModalStyled>
+        <ModalHeader>
+          <CloseButton onClick={() => showModalFunction()}>X</CloseButton>
+        </ModalHeader>
         <Subtitle>You must to be registered to like paintings</Subtitle>
-        <SubmitButton text="Login or Sign up" style={{ cursor: 'pointer' }}/>
+        <Link to="/user">
+          <SubmitButton
+            text="Login or Sign up"
+            style={{ cursor: 'pointer' }}
+            onClick={() => showModalFunction()}
+          />
+        </Link>
       </ModalStyled>
-    </Link>
+    </>
   );
 };

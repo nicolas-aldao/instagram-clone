@@ -30,6 +30,8 @@ const contextReducer = (state, action) => {
       return { ...state, screenType: action.payload };
     case 'set_category_id':
       return { ...state, categorySelected: action.payload };
+    case 'set_not_registered_modal':
+      return { ...state, showNotRegisteredModal: action.payload };
     default:
       return state;
   }
@@ -150,6 +152,15 @@ const setCategorySelected = dispatch => {
   };
 };
 
+const setNotRegisteredModal = dispatch => {
+  return async value => {
+    dispatch({
+      type: 'set_not_registered_modal',
+      payload: value,
+    });
+  };
+};
+
 export const { Provider, Context } = createDataContext(
   contextReducer,
   {
@@ -160,6 +171,7 @@ export const { Provider, Context } = createDataContext(
     tryLocalSignIn,
     setScreenType,
     setCategorySelected,
+    setNotRegisteredModal,
   },
   {
     token: null,
@@ -170,5 +182,6 @@ export const { Provider, Context } = createDataContext(
     lastname: null,
     categorySelected: null,
     screenType: {},
+    showNotRegisteredModal: null,
   },
 );

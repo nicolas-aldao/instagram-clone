@@ -8,7 +8,7 @@ import { List, Item } from './styles';
 export const ListOfCategories = () => {
   const { categories, loading } = useCategoriesData();
   const { setCategorySelected } = useContext(Context);
-  const loadingArray = [1, 2, 3, 4, 5];
+  const loadingArray = [1, 2, 3, 4];
 
   function useCategoriesData() {
     const [categories, setCategories] = useState([]);
