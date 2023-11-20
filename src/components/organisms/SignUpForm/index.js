@@ -32,6 +32,7 @@ export const SignUpForm = ({ title, disabled, onLoading }) => {
       });
     } catch (e) {
       console.log('e ', e);
+      setFrontError('Something went wrong! Please, try later...');
     }
     onLoading(false);
   };

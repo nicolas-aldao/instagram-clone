@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { BROKEN_IMAGE_URL } from '../../../constants';
 import { Context } from '../../../Context';
 import { getFavsAPI } from '../../../services/apiPetgram';
 import { BasicLayout } from '../../layouts/BasicLayout';
@@ -11,6 +12,10 @@ export default () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(undefined);
   const { state } = useContext(Context);
+
+  const imageOnError = event => {
+    event.currentTarget.src = BROKEN_IMAGE_URL;
+  };
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -37,12 +42,14 @@ export default () => {
 
   const Page = () =>
     state.isAuth ? (
-      <BasicLayout title="Favorites" subtitle="Here are your favorite paintings">
+      <BasicLayout
+        title="Favorites"
+        subtitle="Here are your favorite paintings">
         <Grid>
           {favs.length > 0 ? (
             favs.map(fav => (
               <Link key={fav._id} to={`/detail/${fav._id}`}>
-                <Image key={fav._id} src={fav.src} />
+                <Image key={fav._id} src={fav.src} onError={imageOnError} />
               </Link>
             ))
           ) : (

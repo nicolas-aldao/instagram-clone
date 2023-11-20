@@ -7,30 +7,30 @@ import NotRegisteredUserScreen from '../NotRegisteredUserScreen';
 
 export default () => {
   const { state, signOut } = useContext(Context);
-  const [favoriteGenres, setFavoriteGenres] = useState([]);
-  const [genresString, setGenresString] = useState('');
+  const [favoriteGenres, setFavoriteGenres] = useState(undefined);
+  const [genresList, setGenresList] = useState(undefined);
 
   function formatWordList(words) {
-    const length = words.length;
-
-    if (length === 1) {
+    if (words.length === 0) {
+      return `You don't have any favorite artistic genre yet 😔\n
+             You can take a look to the paintings and give a like if you like some!`;
+    } else if (words.length === 1) {
       return `Your favorite genre is ${words[0]}`;
-    } else if (length === 2) {
+    } else if (words.length === 2) {
       return `Your favorite genres are ${words[0]} and ${words[1]}`;
-    } else if (length === 4) {
+    } else if (words.length === 4) {
       return `You like all genres of art! 🎉`;
     } else {
       const formattedWords = words.slice(0, -1).join(', ');
-      return `Your favorite genres are ${formattedWords}, and ${words[length - 1]}`;
+      return `Your favorite genres are ${formattedWords}, and ${
+        words[words.length - 1]
+      }`;
     }
   }
 
   useEffect(() => {
-    if (favoriteGenres.length > 0) {
-      setGenresString(formatWordList(favoriteGenres));
-    } else {
-      setGenresString(`You don't have any favorite artistic genre yet 😔\n
-        You can take a look to the paintings and give a like if you like some!`);
+    if (favoriteGenres) {
+      setGenresList(formatWordList(favoriteGenres));
     }
   }, [favoriteGenres]);
 
@@ -57,7 +57,11 @@ export default () => {
         Fullname: {state.firstname ? state.firstname : state.email}{' '}
         {` ${state.lastname}`}
       </h4>
-      {genresString ? <h5>{genresString}</h5> : null}
+      {genresList !== undefined && favoriteGenres !== undefined ? (
+        <h5>{genresList}</h5>
+      ) : (
+        <br />
+      )}
       <SubmitButton text="Logout" onClick={() => signOut()} />
     </BasicLayout>
   ) : (

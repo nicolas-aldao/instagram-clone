@@ -4,7 +4,13 @@ import { ListOfCategories } from '../../../components/organisms/ListOfCategories
 import { Title, Subtitle } from '../../atoms/Typography';
 import { Div } from './styles';
 
-export const BasicLayout = ({ children, title, subtitle, showCategories, marginTop }) => {
+export const BasicLayout = ({
+  children,
+  title,
+  subtitle,
+  showCategories,
+  marginTop,
+}) => {
   return (
     <>
       <Helmet>
