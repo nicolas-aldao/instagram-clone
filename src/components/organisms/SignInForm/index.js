@@ -5,14 +5,12 @@ import { Context } from '../../../Context';
 import { FormContainer, Form, Input, Button, Title } from './styles';
 
 export const SignInForm = ({ title, disabled, onLoading }) => {
-  const email = useInputValue('');
-  const password = useInputValue('');
+  const email = useInputValue('demo');
+  const password = useInputValue('demo');
   const [frontError, setFrontError] = useState('');
   const {
-    state: { error, screenType },
+    state: { error },
     signIn,
-    signUp,
-    clearErrorMessages,
   } = useContext(Context);
 
   const handleSubmit = event => {
