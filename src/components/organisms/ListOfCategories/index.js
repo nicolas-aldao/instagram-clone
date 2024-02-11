@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { API_URL } from '../../../constants';
 import { Context } from '../../../Context';
 import { BasicTypo } from '../../atoms/Typography';
 import { LoadingCategory } from '../../atoms/LoadingCategory';
@@ -16,7 +17,7 @@ export const ListOfCategories = () => {
 
     useEffect(() => {
       setLoading(true);
-      fetch('https://json-server-ruby.vercel.app/categories')
+      fetch(`${API_URL}/categories`)
         .then(res => res.json())
         .then(response => {
           setCategories(response);

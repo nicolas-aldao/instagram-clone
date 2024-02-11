@@ -1,22 +1,21 @@
-import axios from "axios";
-
-const baseUrl = "https://json-server-ruby.vercel.app";
+import axios from 'axios';
+import { API_URL } from '../constants';
 
 export const getBlogPostsAPI = async () => {
   try {
-    const res = await axios.get(baseUrl + "/posts");
+    const res = await axios.get(`${API_URL}/posts`);
     return res;
   } catch (err) {
-    console.log("getBlogPostsAPI " + err);
+    console.log('getBlogPostsAPI ' + err);
   }
 };
 
 export const addBlogPostAPI = async (title, content) => {
   try {
-    const res = await axios.post(baseUrl + "/posts", {
+    const res = await axios.post(`${API_URL}/posts`, {
       id: 5,
       title,
-      content
+      content,
     });
     return res;
   } catch (err) {
@@ -26,9 +25,9 @@ export const addBlogPostAPI = async (title, content) => {
 
 export const modifyBlogPostAPI = async (id, title, content) => {
   try {
-    const res = await axios.put(baseUrl + "/posts/" + id, {
+    const res = await axios.put(`${API_URL}/posts/${id}`, {
       title,
-      content
+      content,
     });
     return res;
   } catch (err) {
@@ -38,7 +37,7 @@ export const modifyBlogPostAPI = async (id, title, content) => {
 
 export const deleteBlogPostAPI = async id => {
   try {
-    const res = await axios.delete(baseUrl + "/posts/" + id);
+    const res = await axios.delete(`${baseUrl}/posts/${id}`);
     return res;
   } catch (err) {
     console.log(err);

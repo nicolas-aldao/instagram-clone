@@ -23,14 +23,15 @@ module.exports = {
         {
           src: path.resolve('src/assets/icon.png'),
           size: '1024x1024',
-          sizes: [96, 128,144, 192, 256, 384, 512],
+          sizes: [96, 128, 144, 192, 256, 384, 512],
           purpose: 'maskable any',
           destination: path.join('Icons'),
           ios: true,
-        }
-      ]
+        },
+      ],
     }),
-    new WorkboxWebpackPlugin.GenerateSW({ // generate offline support
+    new WorkboxWebpackPlugin.GenerateSW({
+      // generate offline support
       runtimeCaching: [
         {
           urlPattern: new RegExp( // URLS where we store our app images
@@ -41,8 +42,11 @@ module.exports = {
             cacheName: 'images',
           },
         },
-        { // URL where we have our api data
-          urlPattern: new RegExp('https://json-server-ruby.vercel.app'),
+        {
+          // URL where we have our api data
+          urlPattern: new RegExp(
+            'https://json-server-nicolas-aldao.vercel.app',
+          ),
           handler: 'NetworkFirst',
           options: {
             cacheName: 'api',
