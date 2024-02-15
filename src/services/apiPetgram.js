@@ -1,16 +1,16 @@
-import axios from 'axios';
-import { API_URL } from '../constants';
+import axios from "axios";
+import { API_URL } from "../constants";
 
 //const baseUrl = "http://localhost:3000";
 
-export const getFavsAPI = async id => {
+export const getFavsAPI = async (id) => {
   try {
     const res = await axios.get(`${API_URL}/photos/favs/${id}`);
     return res;
   } catch (err) {}
 };
 
-export const getPhotosAPI = async id => {
+export const getPhotosAPI = async (id) => {
   let res;
   try {
     if (id) {
@@ -20,7 +20,9 @@ export const getPhotosAPI = async id => {
     }
     return res;
   } catch (err) {
-    console.log('getPhotosAPI ' + err);
+    // console.log("entra llamda interna error", err);
+    // throw Error(err);
+    return;
   }
 };
 
@@ -29,7 +31,7 @@ export const getPhotoAPI = async (photoId, userId) => {
     const res = await axios.get(`${API_URL}/photos/${photoId}/${userId}`);
     return res;
   } catch (err) {
-    console.log('getPhotoAPI ' + err);
+    console.log("getPhotoAPI " + err);
   }
 };
 
@@ -59,38 +61,38 @@ export const addDislikeAPI = async (userId, photoId) => {
   }
 };
 
-export const getPhotoByCategory = async categoryId => {
+export const getPhotoByCategory = async (categoryId) => {
   try {
     const res = await axios.get(`${API_URL}/photos/category/${categoryId}`);
     return res;
   } catch (err) {
-    console.log('getPhotoAPI ' + err);
+    console.log("getPhotoAPI " + err);
   }
 };
 
-export const getPhotoUserByUser = async userId => {
+export const getPhotoUserByUser = async (userId) => {
   try {
     const res = await axios.get(`${API_URL}/photouser/user/${userId}`);
     return res;
   } catch (err) {
-    console.log('getPhotoAPI ' + err);
+    console.log("getPhotoAPI " + err);
   }
 };
 
-export const getPhotoUserByPhoto = async photoId => {
+export const getPhotoUserByPhoto = async (photoId) => {
   try {
     const res = await axios.get(`${API_URL}/photouser/photo/${photoId}`);
     return res;
   } catch (err) {
-    console.log('getPhotoAPI ' + err);
+    console.log("getPhotoAPI " + err);
   }
 };
 
-export const getUserFavoriteCategory = async userId => {
+export const getUserFavoriteCategory = async (userId) => {
   try {
     const res = await axios.get(`${API_URL}/photos/favs/genre/${userId}`);
     return res;
   } catch (err) {
-    console.log('getUserFavoriteCategory ' + err);
+    console.log("getUserFavoriteCategory " + err);
   }
 };
