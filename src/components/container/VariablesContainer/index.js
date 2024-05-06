@@ -33,7 +33,7 @@ const VariablesContainer = ({ children }) => {
     };
   }, []);
 
-  return <div>{children}</div>;
+  return <div style={{ overflow: "hidden", paddingBottom: "40px" }}>{children}</div>;
 };
 
 export default VariablesContainer;

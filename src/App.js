@@ -24,9 +24,6 @@ export const App = () => {
       <Header />
     </>
   );
-  // TODO: SUFFLE PHOTOS, ADD CATEGORIE ID IN DATA
-  // TODO: ADD TIMEOUT TO LOGIN/SIGNUP
-  // TODO: ADD MODAL REGISTER OR LOGIN WHEN USER TAPS LIKE BUTTON
   return (
     <Suspense fallback={<div />}>
       <BrowserRouter>
