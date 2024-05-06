@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import createDataContext from './createDataContext';
 import apiAuth from './services/apiAuth';
 
@@ -46,7 +45,7 @@ const signUp = dispatch => {
         firstname,
         lastname,
       });
-      await AsyncStorage.setItem('token', response.data.token);
+      localStorage.setItem('token', response.data.token);
       dispatch({
         type: 'signin-or-signup',
         payload: {
@@ -74,7 +73,7 @@ const signIn = dispatch => {
   return async ({ email, password }, callback) => {
     try {
       const response = await apiAuth.post('/signin', { email, password });
-      await AsyncStorage.setItem('token', response.data.token);
+      localStorage.setItem('token', response.data.token);
       dispatch({
         type: 'signin-or-signup',
         payload: {
@@ -100,7 +99,7 @@ const signIn = dispatch => {
 
 const signOut = dispatch => async callback => {
   try {
-    await AsyncStorage.removeItem('token');
+    localStorage.removeItem('token');
     dispatch({ type: 'signout' });
     dispatch({ type: 'is_not_auth' });
     callback();
@@ -120,7 +119,7 @@ const clearErrorMessages = dispatch => {
 const tryLocalSignIn = dispatch => {
   return async (firstNavigate, secondNavigate) => {
     try {
-      const token = await AsyncStorage.getItem('token');
+      const token = localStorage.getItem('token');
       if (token) {
         dispatch({ type: 'signin-or-signup', payload: token });
         dispatch({ type: 'is_auth' });
