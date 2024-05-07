@@ -11,7 +11,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      favicon: 'src/favicon.ico'
+      favicon: './src/favicon.ico'
     }),
     new WebpackPwaManifestPlugin({
       name: 'Artgram',
@@ -22,7 +22,7 @@ module.exports = {
       theme_color: '#8d00ff',
       icons: [
         {
-          src: path.resolve('src/favicon.ico'),
+          src: path.resolve('./src/favicon.ico'),
           size: '48x48',
           sizes: [48],
           purpose: 'maskable any',
