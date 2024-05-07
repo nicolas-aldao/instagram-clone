@@ -20,16 +20,16 @@ module.exports = {
         'App made with react using webpack with midudev course from platzi',
       background_color: '#fff',
       theme_color: '#8d00ff',
-      icons: [
-        {
-          src: path.resolve('./src/favicon.ico'),
-          size: '48x48',
-          sizes: [48],
-          purpose: 'maskable any',
-          destination: path.join('Icons'),
-          ios: true,
-        },
-      ],
+      // icons: [
+      //   {
+      //     src: path.resolve('./src/favicon.ico'),
+      //     size: '48x48',
+      //     sizes: [48],
+      //     purpose: 'maskable any',
+      //     destination: path.join('Icons'),
+      //     ios: true,
+      //   },
+      // ],
     }),
     new WorkboxWebpackPlugin.GenerateSW({
       // generate offline support
