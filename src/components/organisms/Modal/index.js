@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { MdOutlineClose } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { Context } from '../../../Context';
 import { SubmitButton } from '../../atoms/SubmitButton';
@@ -27,7 +28,7 @@ export const Modal = () => {
         <ModalStyled onClick={e => handleModalClick(e)}>
           <ModalHeader>
             <CloseButton onClick={() => showModalFunction(false)}>
-              X
+              <MdOutlineClose />
             </CloseButton>
           </ModalHeader>
           <Subtitle>You must to be registered to like paintings</Subtitle>

@@ -22,9 +22,9 @@ export const ModalStyled = styled.div`
   position: fixed;
   background-color: var(--background-color);
   width: 200px;
-  height: 200px;
+  height: 170px;
   padding: 5px 20px;
-  border-radius: 20px;
+  border-radius: 5px;
   top: 40%;
   left: calc(50% - 100px);
   z-index: 6;
