@@ -10,7 +10,7 @@ export const FormContainer = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 8px 16px 0 16px;
 `;
 
 export const Input = styled.input`
