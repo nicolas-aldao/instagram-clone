@@ -6,12 +6,7 @@ export const ModalContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.3
-  ); /* Adjust the last value (alpha) for transparency */
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +17,6 @@ export const ModalStyled = styled.div`
   position: fixed;
   background-color: var(--background-color);
   width: 200px;
-  height: 200px;
   padding: 10px 20px;
   border-radius: 20px;
   top: 40%;
@@ -47,7 +41,7 @@ export const ModalHeader = styled.div`
 export const ModalContent = styled.div`
   display: flex;
   justify-content: center;
-  height: 200px;
+  padding: 20px 0;
 `;
 
 export const TextContainer = styled.div`

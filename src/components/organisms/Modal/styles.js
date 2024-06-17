@@ -30,7 +30,7 @@ export const ModalStyled = styled.div`
   z-index: 6;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   text-align: center;
   box-shadow: -6px 0px 187px -13px rgba(0, 0, 0, 0.85);
   -webkit-box-shadow: -6px 0px 187px -13px rgba(0, 0, 0, 0.85);
@@ -46,7 +46,6 @@ export const ModalHeader = styled.div`
 
 export const CloseButton = styled.button`
   color: gray;
-  font-weight: bold;
   font-size: 14px;
   cursor: pointer;
   margin: 0;

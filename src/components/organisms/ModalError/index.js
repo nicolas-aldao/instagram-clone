@@ -13,9 +13,6 @@ export const ModalError = ({ errorMessage }) => {
   return (
     <ModalContainer>
       <ModalStyled>
-        <ModalHeader>
-          <CloseButton>X</CloseButton>
-        </ModalHeader>
         <ModalContent>
           <TextContainer>
             <Subtitle>{errorMessage}</Subtitle>

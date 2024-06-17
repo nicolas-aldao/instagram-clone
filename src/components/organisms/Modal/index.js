@@ -27,9 +27,6 @@ export const Modal = () => {
       <ModalContainer onClick={() => showModalFunction(false)}>
         <ModalStyled onClick={e => handleModalClick(e)}>
           <ModalHeader>
-            <CloseButton onClick={() => showModalFunction(false)}>
-              <MdOutlineClose />
-            </CloseButton>
           </ModalHeader>
           <Subtitle>You must to be registered to like paintings</Subtitle>
           <Link to="/user">
@@ -39,6 +36,9 @@ export const Modal = () => {
               onClick={() => showModalFunction(false)}
             />
           </Link>
+          <CloseButton onClick={() => showModalFunction(false)}>
+            Close
+          </CloseButton>
         </ModalStyled>
       </ModalContainer>
     </>

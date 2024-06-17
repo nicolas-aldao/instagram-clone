@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     :root {
@@ -60,6 +60,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     p {
-      color: var(--grey-6);
+      color: var(--grey-8);
     }
 `;

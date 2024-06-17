@@ -1,36 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { LoadingPhotocard } from "../LoadingPhotocard";
 import { ModalError } from "../ModalError";
 import { Photocard } from "../Photocard";
 import { usePhotoCards } from "./usePhotoCards";
 
-export const ListOfPhotocardsComponent = (
-  {
-    // data = [],
-    // isLoading = false,
-    // errorMessage = undefined,
-  }
-) => {
+export const ListOfPhotocardsComponent = () => {
   const loadingCards = [1, 2, 3, 4, 5];
-  // console.log("error message", errorMessage);
-  // const [errorMessageState, setErrorMessageState] = useState(errorMessage);
-
-  // useEffect(() => {
-  //   setErrorMessageState(errorMessage);
-  // }, [errorMessage]);
-
-  // useEffect(() => {
-  //   console.log("errorMessageState ", errorMessageState);
-  // }, [errorMessageState]);
-
   const { photocards, isLoading, errorMessage } = usePhotoCards();
-
-  useEffect(() => {
-    console.log("error message en componente superior ", errorMessage);
-  }, [errorMessage]);
-  useEffect(() => {
-    console.log("isLoading en componente superior ", isLoading);
-  }, [isLoading]);
 
   // temporal
   if (isLoading) {
