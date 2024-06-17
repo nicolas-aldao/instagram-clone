@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { BROKEN_IMAGE_URL } from '../../../constants';
-import { Context } from '../../../Context';
-import { addLikeAPI, addDislikeAPI } from '../../../services/apiPetgram';
-import { FavButton } from '../../atoms/FavButton';
-import { useNearScreen } from '../../../hooks/useNearScreen';
-import { Article, ImgWrapper, Img, Title, Subtitle } from './styles';
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { BROKEN_IMAGE_URL } from "../../../constants";
+import { Context } from "../../../Context";
+import { addLikeAPI, addDislikeAPI } from "../../../services/apiPetgram";
+import { FavButton } from "../../atoms/FavButton";
+import { useNearScreen } from "../../../hooks/useNearScreen";
+import { Article, ImgWrapper, Img, Title, Subtitle } from "./styles";
 
 export const Photocard = ({
   id,
@@ -22,10 +22,11 @@ export const Photocard = ({
   const [likeNumber, setLikeNumber] = useState(likes);
   const { setNotRegisteredModal } = useContext(Context);
 
-  const imageOnError = event => {
+  const imageOnError = (event) => {
     event.currentTarget.src = BROKEN_IMAGE_URL;
   };
 
+  // TODO: NEEDS REFACTOR
   const handleLike = async () => {
     if (state.userId) {
       try {
@@ -36,7 +37,7 @@ export const Photocard = ({
         console.log(e);
       }
     } else {
-      console.log('User is not logged');
+      console.log("User is not logged");
     }
   };
 
@@ -50,7 +51,7 @@ export const Photocard = ({
         console.log(e);
       }
     } else {
-      console.log('User is not logged');
+      console.log("User is not logged");
     }
   };
 
@@ -65,8 +66,9 @@ export const Photocard = ({
           <Link
             to={{
               pathname: `/detail/${id}`,
-              query: { name: 'John Doe' },
-            }}>
+              query: { name: "John Doe" },
+            }}
+          >
             <ImgWrapper>
               <Img src={src} onError={imageOnError} />
             </ImgWrapper>

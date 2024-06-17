@@ -29,14 +29,16 @@ export const ListOfPhotocardsComponent = () => {
       )}
 
       <ul>
-        {photocards.map((photo) => (
-          <Photocard
-            key={photo._id}
-            id={photo._id}
-            liked={photo.liked}
-            {...photo}
-          />
-        ))}
+        {photocards.length > 0 &&
+          !isLoading &&
+          photocards.map((photo) => (
+            <Photocard
+              key={photo._id}
+              id={photo._id}
+              liked={photo.liked}
+              {...photo}
+            />
+          ))}
       </ul>
     </>
   );

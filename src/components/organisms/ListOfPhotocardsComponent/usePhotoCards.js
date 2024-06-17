@@ -12,6 +12,7 @@ export const usePhotoCards = () => {
   } = useContext(Context);
   let res;
 
+  // TODO: NEEDS REFACTOR
   useEffect(() => {
     async function fetchMyAPI() {
       setIsLoading(true);
@@ -33,7 +34,7 @@ export const usePhotoCards = () => {
     } catch (err) {
       setErrorMessage(GENERIC_MESSAGE_ERROR);
     }
-  }, [categorySelected]);
+  }, [categorySelected, userId]);
 
   return { photocards, isLoading, errorMessage };
 };

@@ -1,53 +1,53 @@
-import createDataContext from './createDataContext';
-import apiAuth from './services/apiAuth';
+import createDataContext from "./createDataContext";
+import apiAuth from "./services/apiAuth";
 
 const contextReducer = (state, action) => {
   switch (action.type) {
-    case 'signin-or-signup':
+    case "signin-or-signup":
       return {
-        error: { type: '', msg: '' },
+        error: { type: "", msg: "" },
         token: action.payload.token,
         userId: action.payload.userId,
         email: action.payload.email,
         firstname: action.payload.firstname,
         lastname: action.payload.lastname,
       };
-    case 'add_error':
+    case "add_error":
       return {
         ...state,
         error: { type: action.payload.type, msg: action.payload.msg },
       };
-    case 'clear_error_message':
-      return { ...state, error: '' };
-    case 'signout':
-      return { token: null, error: '' };
-    case 'is_auth':
+    case "clear_error_message":
+      return { ...state, error: "" };
+    case "signout":
+      return { token: null, error: "" };
+    case "is_auth":
       return { ...state, isAuth: true };
-    case 'is_not_auth':
+    case "is_not_auth":
       return { ...state, isAuth: false };
-    case 'set_screen_type':
+    case "set_screen_type":
       return { ...state, screenType: action.payload };
-    case 'set_category_id':
+    case "set_category_id":
       return { ...state, categorySelected: action.payload };
-    case 'set_not_registered_modal':
+    case "set_not_registered_modal":
       return { ...state, showNotRegisteredModal: action.payload };
     default:
       return state;
   }
 };
 
-const signUp = dispatch => {
+const signUp = (dispatch) => {
   return async ({ email, password, firstname, lastname }, callback) => {
     try {
-      const response = await apiAuth.post('/signup', {
+      const response = await apiAuth.post("/signup", {
         email,
         password,
         firstname,
         lastname,
       });
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem("token", response.data.token);
       dispatch({
-        type: 'signin-or-signup',
+        type: "signin-or-signup",
         payload: {
           token: response.data.token,
           userId: response.data.userId,
@@ -56,26 +56,26 @@ const signUp = dispatch => {
           lastname: response.data.lastname,
         },
       });
-      dispatch({ type: 'is_auth' });
+      dispatch({ type: "is_auth" });
       if (callback) {
         callback();
       }
     } catch (err) {
       dispatch({
-        type: 'add_error',
-        payload: { type: 'signup', msg: err.response.data.error },
+        type: "add_error",
+        payload: { type: "signup", msg: err.response.data.error },
       });
     }
   };
 };
 
-const signIn = dispatch => {
+const signIn = (dispatch) => {
   return async ({ email, password }, callback) => {
     try {
-      const response = await apiAuth.post('/signin', { email, password });
-      localStorage.setItem('token', response.data.token);
+      const response = await apiAuth.post("/signin", { email, password });
+      localStorage.setItem("token", response.data.token);
       dispatch({
-        type: 'signin-or-signup',
+        type: "signin-or-signup",
         payload: {
           token: response.data.token,
           userId: response.data.userId,
@@ -84,45 +84,45 @@ const signIn = dispatch => {
           lastname: response.data.lastname,
         },
       });
-      dispatch({ type: 'is_auth' });
+      dispatch({ type: "is_auth" });
       if (callback) {
         callback();
       }
     } catch (err) {
       dispatch({
-        type: 'add_error',
-        payload: { type: 'login', msg: err.response.data.error },
+        type: "add_error",
+        payload: { type: "login", msg: err.response.data.error },
       });
     }
   };
 };
 
-const signOut = dispatch => async callback => {
+const signOut = (dispatch) => async (callback) => {
   try {
-    localStorage.removeItem('token');
-    dispatch({ type: 'signout' });
-    dispatch({ type: 'is_not_auth' });
+    localStorage.removeItem("token");
+    dispatch({ type: "signout" });
+    dispatch({ type: "is_not_auth" });
     callback();
   } catch (err) {
     console.log(err);
   }
 };
 
-const clearErrorMessages = dispatch => {
+const clearErrorMessages = (dispatch) => {
   return () => {
     dispatch({
-      type: 'clear_error_message',
+      type: "clear_error_message",
     });
   };
 };
 
-const tryLocalSignIn = dispatch => {
+const tryLocalSignIn = (dispatch) => {
   return async (firstNavigate, secondNavigate) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (token) {
-        dispatch({ type: 'signin-or-signup', payload: token });
-        dispatch({ type: 'is_auth' });
+        dispatch({ type: "signin-or-signup", payload: token });
+        dispatch({ type: "is_auth" });
         firstNavigate();
       } else {
         secondNavigate();
@@ -133,28 +133,28 @@ const tryLocalSignIn = dispatch => {
   };
 };
 
-const setScreenType = dispatch => {
-  return async screenType => {
+const setScreenType = (dispatch) => {
+  return async (screenType) => {
     dispatch({
-      type: 'set_screen_type',
+      type: "set_screen_type",
       payload: screenType,
     });
   };
 };
 
-const setCategorySelected = dispatch => {
-  return async categoryId => {
+const setCategorySelected = (dispatch) => {
+  return async (categoryId) => {
     dispatch({
-      type: 'set_category_id',
+      type: "set_category_id",
       payload: categoryId,
     });
   };
 };
 
-const setNotRegisteredModal = dispatch => {
-  return async value => {
+const setNotRegisteredModal = (dispatch) => {
+  return async (value) => {
     dispatch({
-      type: 'set_not_registered_modal',
+      type: "set_not_registered_modal",
       payload: value,
     });
   };
@@ -174,7 +174,7 @@ export const { Provider, Context } = createDataContext(
   },
   {
     token: null,
-    error: { type: '', msg: '' },
+    error: { type: "", msg: "" },
     isAuth: false,
     userId: null,
     firstname: null,
@@ -182,5 +182,5 @@ export const { Provider, Context } = createDataContext(
     categorySelected: null,
     screenType: {},
     showNotRegisteredModal: null,
-  },
+  }
 );
