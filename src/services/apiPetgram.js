@@ -88,6 +88,7 @@ export const getPhotoUserByPhoto = async (photoId) => {
   }
 };
 
+// delete endpoint in server
 // export const getUserFavoriteCategory = async (userId) => {
 //   try {
 //     const res = await axios.get(`${API_URL}/photos/favs/genre/${userId}`);

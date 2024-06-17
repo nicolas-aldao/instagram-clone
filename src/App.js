@@ -1,22 +1,23 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Provider as ContextProvider } from './Context';
-import VariablesContainer from './components/container/VariablesContainer';
-import { Header } from './components/organisms/Header';
-import { NavBar } from './components/organisms/NavBar';
-import { HomeScreen } from './components/pages/HomeScreen';
-import { GlobalStyle } from './GlobalStyles';
+import React, { Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { Provider as ContextProvider } from "./Context";
+import VariablesContainer from "./components/container/VariablesContainer";
+import { Header } from "./components/organisms/Header";
+import { NavBar } from "./components/organisms/NavBar";
+import { HomeScreen } from "./components/pages/HomeScreen";
+import { GlobalStyle } from "./GlobalStyles";
 
 export const App = () => {
   const FavoritesScreen = React.lazy(() =>
-    import('./components/pages/FavoritesScreen'),
+    import("./components/pages/FavoritesScreen")
   );
-  const UserScreen = React.lazy(() => import('./components/pages/UserScreen'));
+  const UserScreen = React.lazy(() => import("./components/pages/UserScreen"));
   const NotFoundScreen = React.lazy(() =>
-    import('./components/pages/NotFoundScreen'),
+    import("./components/pages/NotFoundScreen")
   );
   const DetailsScreen = React.lazy(() =>
-    import('./components/pages/DetailsScreen'),
+    import("./components/pages/DetailsScreen")
   );
 
   const AppLayout = () => (
