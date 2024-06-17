@@ -5,43 +5,39 @@ import { Photocard } from "../Photocard";
 import { usePhotoCards } from "./usePhotoCards";
 
 export const ListOfPhotocardsComponent = () => {
-  const loadingCards = [1, 2, 3, 4, 5];
   const { photocards, isLoading, errorMessage } = usePhotoCards();
 
-  // temporal
-  if (isLoading) {
+  const LoadingComponent = () => {
     return (
       <ul>
-        {loadingCards.map((photo) => (
+        {[...Array(5)].map((photo) => (
           <LoadingPhotocard />
         ))}
       </ul>
     );
-  }
-
-  if (errorMessage) {
-    return (
-      <>
-        <ul>
-          {loadingCards.map((photo) => (
-            <LoadingPhotocard />
-          ))}
-        </ul>
-        <ModalError errorMessage={errorMessage} />
-      </>
-    );
-  }
+  };
 
   return (
-    <ul>
-      {photocards.map((photo) => (
-        <Photocard
-          key={photo._id}
-          id={photo._id}
-          liked={photo.liked}
-          {...photo}
-        />
-      ))}
-    </ul>
+    <>
+      {isLoading && <LoadingComponent />}
+
+      {errorMessage && (
+        <>
+          <LoadingComponent />
+          <ModalError errorMessage={errorMessage} />
+        </>
+      )}
+
+      <ul>
+        {photocards.map((photo) => (
+          <Photocard
+            key={photo._id}
+            id={photo._id}
+            liked={photo.liked}
+            {...photo}
+          />
+        ))}
+      </ul>
+    </>
   );
 };

@@ -1,22 +1,16 @@
-import React, { useState, useContext } from 'react';
-import { useInputValue } from '../../../hooks/useInputValue';
-import { Badge } from '../../atoms/Badge';
-import { Context } from '../../../Context';
-import {
-  FormContainer,
-  Form,
-  Input,
-  Button,
-  Title,
-  Error,
-} from '../SignInForm/styles';
+import React, { useState, useContext } from "react";
+import { useInputValue } from "../../../hooks/useInputValue";
+import { Badge } from "../../atoms/Badge";
+import { Context } from "../../../Context";
+import { FormContainer, Form, Input, Title, Error } from "../SignInForm/styles";
+import { PrimaryButton } from "./../../atoms/PrimaryButton";
 
 export const SignUpForm = ({ title, disabled, onLoading }) => {
-  const email = useInputValue('');
-  const password = useInputValue('');
-  const firstname = useInputValue('');
-  const lastname = useInputValue('');
-  const [frontError, setFrontError] = useState('');
+  const email = useInputValue("");
+  const password = useInputValue("");
+  const firstname = useInputValue("");
+  const lastname = useInputValue("");
+  const [frontError, setFrontError] = useState("");
   const {
     state: { error },
     signUp,
@@ -28,22 +22,22 @@ export const SignUpForm = ({ title, disabled, onLoading }) => {
     onLoading(true);
     try {
       await signUp({ email, password, firstname, lastname }, () => {
-        console.log('signup');
+        console.log("signup");
       });
     } catch (e) {
-      console.log('e ', e);
-      setFrontError('Something went wrong! Please, try later...');
+      console.log("e ", e);
+      setFrontError("Something went wrong! Please, try later...");
     }
     onLoading(false);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    if (email.value === '' || password.value === '') {
-      setFrontError('User and password fields are required');
+    if (email.value === "" || password.value === "") {
+      setFrontError("User and password fields are required");
       return;
     }
-    setFrontError('');
+    setFrontError("");
     onSubmit({
       email: email.value,
       password: password.value,
@@ -75,15 +69,15 @@ export const SignUpForm = ({ title, disabled, onLoading }) => {
           {...lastname}
           disabled={disabled}
         />
-        <Button disabled={disabled}>{title}</Button>
-        {error?.type === 'signup' && (
+        <PrimaryButton disabled={disabled}>{title}</PrimaryButton>
+        {error?.type === "signup" && (
           <Badge
             content={error?.msg}
             fontColor="#d71919"
             backgroundColor="#FFCCBC"
           />
         )}
-        {frontError !== '' && (
+        {frontError !== "" && (
           <Badge
             content={frontError}
             fontColor="#d71919"

@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../../../Context";
 import { BasicLayout } from "../../layouts/BasicLayout";
-import { SubmitButton } from "../../atoms/SubmitButton";
 import NotRegisteredUserScreen from "../NotRegisteredUserScreen";
 import { Spacer } from "../../atoms/Spacer";
 import { Container, Fullname } from "./styles";
+import { PrimaryButton } from "../../atoms/PrimaryButton";
 
 export default () => {
   const { state, signOut } = useContext(Context);
@@ -17,7 +17,7 @@ export default () => {
           {` ${state.lastname}`}
         </Fullname>
         <Spacer />
-        <SubmitButton text="Logout" onClick={() => signOut()} />
+        <PrimaryButton onClick={() => signOut()}>Logout</PrimaryButton>
       </Container>
     </BasicLayout>
   ) : (

@@ -1,40 +1,36 @@
-import React, { useContext } from 'react';
-import { MdOutlineClose } from "react-icons/md";
-import { Link } from 'react-router-dom';
-import { Context } from '../../../Context';
-import { SubmitButton } from '../../atoms/SubmitButton';
-import { Subtitle } from '../../atoms/Typography';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { Context } from "../../../Context";
+import { Subtitle } from "../../atoms/Typography";
 import {
   ModalContainer,
   ModalStyled,
   ModalHeader,
   CloseButton,
-} from './styles';
+} from "./styles";
+import { PrimaryButton } from "../../atoms/PrimaryButton";
 
 export const Modal = () => {
   const { setNotRegisteredModal } = useContext(Context);
 
-  const handleModalClick = e => {
+  const handleModalClick = (e) => {
     e.stopPropagation();
   };
 
-  const showModalFunction = async val => {
+  const showModalFunction = async (val) => {
     setNotRegisteredModal(val);
   };
 
   return (
     <>
       <ModalContainer onClick={() => showModalFunction(false)}>
-        <ModalStyled onClick={e => handleModalClick(e)}>
-          <ModalHeader>
-          </ModalHeader>
+        <ModalStyled onClick={(e) => handleModalClick(e)}>
+          <ModalHeader></ModalHeader>
           <Subtitle>You must to be registered to like paintings</Subtitle>
           <Link to="/user">
-            <SubmitButton
-              text="Login or Sign up"
-              style={{ cursor: 'pointer' }}
-              onClick={() => showModalFunction(false)}
-            />
+            <PrimaryButton onClick={() => showModalFunction(false)}>
+              Login or Sign up
+            </PrimaryButton>
           </Link>
           <CloseButton onClick={() => showModalFunction(false)}>
             Close

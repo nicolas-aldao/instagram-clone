@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  `;
+`;
 
 export const Form = styled.form`
   display: flex;
@@ -23,22 +23,8 @@ export const Input = styled.input`
   width: calc(100% - 16px);
 `;
 
-export const Button = styled.button`
-  background: var(--primary-color);
-  border-radius: 3px;
-  color: #fff;
-  height: 32px;
-  width: 250px;
-  align-self: center;
-  text-align: center;
-  &[disabled] {
-    opacity: 0.3;
-  }
-`;
-
 export const Title = styled.h2`
   font-size: 16px;
   font-weight: 500;
   padding: 8px 0;
 `;
-

@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
       --secondary-color-light: #FFE0BF;
       --background-color: #FAFAFA;
       --text-color: #262626;
+      --text-color-white: #FAFAFA;
       --success: #34A853;
       --success-light: #9EE1C0;
       --warning: #FBBC05;
@@ -23,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
       --grey-6: #8C8C8C;
       --grey-7: #595959;
       --grey-8: #262626;
+      --border-radius-lg: 16px;
     }
 
     html {

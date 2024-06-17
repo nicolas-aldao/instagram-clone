@@ -1,19 +1,20 @@
-import React, { useState, useContext } from 'react';
-import { useInputValue } from '../../../hooks/useInputValue';
-import { Badge } from '../../atoms/Badge';
-import { Context } from '../../../Context';
-import { FormContainer, Form, Input, Button, Title } from './styles';
+import React, { useState, useContext } from "react";
+import { useInputValue } from "../../../hooks/useInputValue";
+import { Badge } from "../../atoms/Badge";
+import { PrimaryButton } from "../../atoms/PrimaryButton";
+import { Context } from "../../../Context";
+import { FormContainer, Form, Input, Title } from "./styles";
 
 export const SignInForm = ({ title, disabled, onLoading }) => {
-  const email = useInputValue('demo');
-  const password = useInputValue('demo');
-  const [frontError, setFrontError] = useState('');
+  const email = useInputValue("demo");
+  const password = useInputValue("demo");
+  const [frontError, setFrontError] = useState("");
   const {
     state: { error },
     signIn,
   } = useContext(Context);
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit({
       email: email.value,
@@ -25,11 +26,11 @@ export const SignInForm = ({ title, disabled, onLoading }) => {
     onLoading(true);
     try {
       await signIn({ email, password }, () => {
-        console.log('logged');
+        console.log("logged");
       });
     } catch (e) {
-      console.log('e ', e);
-      setFrontError('Something went wrong! Please, try later...');
+      console.log("e ", e);
+      setFrontError("Something went wrong! Please, try later...");
     }
     onLoading(false);
   };
@@ -45,15 +46,15 @@ export const SignInForm = ({ title, disabled, onLoading }) => {
           {...password}
           disabled={disabled}
         />
-        <Button disabled={disabled}>{title}</Button>
-        {error?.type === 'login' && (
+        <PrimaryButton disabled={disabled}>{title}</PrimaryButton>
+        {error?.type === "login" && (
           <Badge
             content={error?.msg}
             fontColor="#d71919"
             backgroundColor="#FFCCBC"
           />
         )}
-        {frontError !== '' && (
+        {frontError !== "" && (
           <Badge
             content={frontError}
             fontColor="#d71919"
