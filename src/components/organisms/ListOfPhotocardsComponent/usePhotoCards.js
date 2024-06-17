@@ -13,22 +13,24 @@ export const usePhotoCards = () => {
   let res;
 
   // TODO: NEEDS REFACTOR
-  useEffect(() => {
-    async function fetchMyAPI() {
-      setIsLoading(true);
-      if (categorySelected !== null && categorySelected !== undefined) {
-        res = await getPhotoByCategory(categorySelected);
-      } else {
-        res = await getPhotosAPI(userId);
-      }
-      if (!res) {
-        setErrorMessage(GENERIC_MESSAGE_ERROR);
-      } else {
-        setPhotocards(res.data);
-      }
-      setIsLoading(false);
+  async function fetchMyAPI() {
+    setIsLoading(true);
+    if (categorySelected !== null && categorySelected !== undefined) {
+      res = await getPhotoByCategory(categorySelected, userId);
+    } else {
+      res = await getPhotosAPI(userId);
     }
+    if (!res) {
+      setErrorMessage(GENERIC_MESSAGE_ERROR);
+    } else {
+      setPhotocards(res.data);
+    }
+    setIsLoading(false);
+  }
 
+  // TODO: NEEDS REFACTOR
+  useEffect(() => {
+    console.log("🚀 ~ usePhotoCards ~ categorySelected:", categorySelected);
     try {
       fetchMyAPI();
     } catch (err) {
