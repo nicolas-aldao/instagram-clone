@@ -17,7 +17,9 @@ export default () => {
           {` ${state.lastname}`}
         </Fullname>
         <Spacer />
-        <PrimaryButton onClick={() => signOut()}>Logout</PrimaryButton>
+        <PrimaryButton disabled={true} onClick={() => signOut()}>
+          Logout
+        </PrimaryButton>
       </Container>
     </BasicLayout>
   ) : (
