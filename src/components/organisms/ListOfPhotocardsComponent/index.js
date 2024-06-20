@@ -1,4 +1,5 @@
 import React from "react";
+
 import { LoadingPhotocard } from "../LoadingPhotocard";
 import { ModalError } from "../ModalError";
 import { Photocard } from "../Photocard";
@@ -10,8 +11,8 @@ export const ListOfPhotocardsComponent = () => {
   const LoadingComponent = () => {
     return (
       <ul>
-        {[...Array(5)].map((photo) => (
-          <LoadingPhotocard />
+        {[...Array(5)].map((photo, index) => (
+          <LoadingPhotocard key={index} />
         ))}
       </ul>
     );
@@ -31,7 +32,7 @@ export const ListOfPhotocardsComponent = () => {
       <ul>
         {photocards.length > 0 &&
           !isLoading &&
-          photocards.map((photo) => (
+          photocards?.map((photo) => (
             <Photocard
               key={photo._id}
               id={photo._id}
