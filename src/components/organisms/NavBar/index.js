@@ -8,15 +8,10 @@ const SIZE = "32px";
 
 export const NavBar = () => {
   // TODO: NEEDS REFACTOR
-  const email = "demo";
-  const password = "demo";
-
-  const { signIn } = useContext(Context);
+  const { demoSignIn } = useContext(Context);
 
   const autoLogin = async () => {
-    await signIn({ email, password }, () => {
-      console.log("logged");
-    });
+    await demoSignIn();
   };
 
   useEffect(() => {
