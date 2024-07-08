@@ -17,12 +17,12 @@ export const usePhotoCards = () => {
   const { data: photocards, isLoading, errorMessage } = useFetch(fetchOptions);
 
   useEffect(() => {
-    userId &&
-      setFetchOptions({
-        serviceMethod: "getPhotosAPI",
-        param: userId,
-        initialData: undefined,
-      });
+    // userId &&
+    setFetchOptions({
+      serviceMethod: "getPhotosAPI",
+      param: userId,
+      initialData: undefined,
+    });
   }, [userId]);
 
   useEffect(() => {

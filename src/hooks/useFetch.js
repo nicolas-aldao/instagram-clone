@@ -38,7 +38,7 @@ export const useFetch = ({
       } else if (axiosError.request) {
         setErrorMessage("No se pudo realizar la solicitud");
       } else {
-        setErrorMessage("Error de configuración");
+        setErrorMessage("Ha ocurrido un error, intente más tarde");
       }
     } finally {
       setIsLoading(false);
