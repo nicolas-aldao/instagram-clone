@@ -97,23 +97,6 @@ const signIn = (dispatch) => {
   };
 };
 
-// const demoSignIn = (dispatch) => {
-//   return async () => {
-//     // localStorage.setItem("token", response.data.token);
-//     dispatch({
-//       type: "signin-or-signup",
-//       payload: {
-//         token: "",
-//         userId: "65b6d2b2e4ae979c61ad9afc",
-//         email: "demo",
-//         firstname: "Demo",
-//         lastname: "User",
-//       },
-//     });
-//     dispatch({ type: "is_auth" });
-//   };
-// };
-
 const signOut = (dispatch) => async (callback) => {
   try {
     localStorage.removeItem("token");
@@ -183,7 +166,6 @@ export const { Provider, Context } = createDataContext(
     signUp,
     signIn,
     signOut,
-    // demoSignIn,
     clearErrorMessages,
     tryLocalSignIn,
     setScreenType,

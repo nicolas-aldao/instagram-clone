@@ -17,8 +17,6 @@ export const usePhotoCards = () => {
   const { data: photocards, isLoading, errorMessage } = useFetch(fetchOptions);
 
   useEffect(() => {
-    // console.log("corre get phoyos");
-    // userId &&
     setFetchOptions({
       serviceMethod: "getPhotosAPI",
       param: userId,
